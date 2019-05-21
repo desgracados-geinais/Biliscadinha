@@ -2,17 +2,17 @@ local fireModel = 2023
 local isFireOn = false
 
 local fireTable = {
-		--  { x, y, z, "Location", "Incident description", "special or regular", carID(or blank) }
-        { 595.06, -535.41, 17, "Dillimore, behind the Police Building.", "There's a vehicle smoking, possibly coming on fire!", "regular", 401 },
-        { 658.0908, -439.372, 16, "Dillimore, the bins behind the bar at north!", "We try to extinguish it and it doesn't work! They're on fire!" },
-		{ -76.41796875, -1593.662109375, 2.6171875, "Flint Intersection, trailer park LS South-West.", "There's smoke coming from a trailer park...you guys might want to check this!" },
-		{ 2351.08984375, -653.4462890625, 128.0546875, "North Rock, the shack on top of the hill!", "I'm not sure, but it's worth checking it out! There's much smoke coming out of there!", "special", 410 },
-		{ 2626.9677734375, -846.2607421875, 84.179885864258, "North Rock, by a shack on the hill!", "A tree just got on fire, god damn California sun!" },
-		{  2859.03515625, -598.166015625, 10.928389549255, "Interstate 425 East, by the highway.", "A car seems heavily damaged, smoking, and there's a fire next to it! Hurry!", "regular", 420 },
-		{ 392.51171875, -1924.5078125, 10.25, "Santa Monica Pier.", "One of the wood building got on fire!", "special" },
-		{ -104.0712890625, -331.7822265625, 1.4296875, "Red county, blueberry warehouse.", "Not sure what hit the tank, but I feel fire will come out soon!", "regular", 403 },
-		{ 90.162109375, -286.1953125, 1.578125, "Red county, blueberry warehouse.", "Not sure what hit the tank, but I feel fire will come out soon!", "regular", 403 },
-		{ 1368.8466796875, -291.900390625, 1.7080450057983, "Mulholland canal!", "A skimmer just crashed here by the beach!", "regular", 460 }
+		--  {x, y, z, "Localização", "Descrição do incidente", "Grave ou Normal", carID (ou em branco)}
+        { 595.06, -535.41, 17, "Dillimore, atrás do prédio da polícia", "Há um veículo fumaçando, possivelmente pegando fogo!", "Normal", 401 },
+        { 658.0908, -439.372, 16, "Dillimore, as lixeiras atrás do bar ao norte!", "Nós tentamos extingui-lo e não funciona! Eles estão pegando fogo!" },
+		{ -76.41796875, -1593.662109375, 2.6171875, "Flint Intersection, parque de trailers LS South-West. "," Há fumaça vindo de um parque de trailers ... vocês podem querer checar isso! " },
+		{ 2351.08984375, -653.4462890625, 128.0546875, "North Rock, o barraco no topo da colina!", "Eu não tenho certeza, mas vale a pena conferir! Há muita fumaça saindo de lá!", "Grave", 410 },
+		{ 2626.9677734375, -846.2607421875, 84.179885864258, "North Rock, por uma cabana na colina!", "Uma árvore acabou de pegar fogo, maldito sol da Califórnia!" },
+		{  2859.03515625, -598.166015625, 10.928389549255, "Interstate 425 East, pela rodovia.", "Um carro parece muito danificado, fumando e há um incêndio perto dele! Depressa!", "Normal", 420 },
+		{ 392.51171875, -1924.5078125, 10.25, "Santa Monica Pier.", "Um dos edifícios de madeira pegou fogo!", "Grave" },
+		{ -104.0712890625, -331.7822265625, 1.4296875, "Red county, blueberry warehouse.", "Não sei o que atingiu o tanque, mas sinto que o fogo vai sair em breve!", "Normal", 403 },
+		{ 90.162109375, -286.1953125, 1.578125, "Red county, blueberry warehouse.", "Não tenho certeza do que atingiu o tanque, mas sinto que o fogo vai sair em breve!", "Normal", 403 },
+		{ 1368.8466796875, -291.900390625, 1.7080450057983, "Mulholland canal!", "Um pato apenas caiu aqui na praia!", "Normal", 460 }
 }
 
 function loadthescript()
@@ -33,7 +33,7 @@ function fdfire()
                 outputChatBox("[RADIO] Location: "..fireTable[randomfire][4].." Please report there immediately. We added a blip on your GPS.",v,245, 40, 135)
             end
 
-            -- You can get table info like this below, i set the variable above to make it shorter to call from.
+            -- Você pode obter informações de tabela como esta abaixo, eu defini a variável acima para torná-lo mais curto para chamar de.
             --outputDebugString("x:"..fireTable[randomfire][1].." y:"..fireTable[randomfire][2].." z:"..fireTable[randomfire][3])
 			if (fireTable[randomfire][7]) then
 				local fireveh = createVehicle(fireTable[randomfire][7], fX, fY, fZ)
@@ -115,7 +115,7 @@ function fdfire()
         end
 end
 
--- /randomfire - Start a random fire from the table
+-- /randomfire - Comece um fogo aleatório da mesa
 function randomfire (thePlayer)
 	if ( exports.integration:isPlayerTrialAdmin ( thePlayer ) ) then
 		outputDebugString(isFireOn)
@@ -130,7 +130,7 @@ function randomfire (thePlayer)
 end
 addCommandHandler("randomfire", randomfire)
 
--- /cancelfire - Stops the whole fire process (restarts the resource)
+-- /cancelfire - Para todo o processo de incêndio (reinicia o recurso)
 function cancelrandomfire (thePlayer)
 	if ( exports.integration:isPlayerTrialAdmin ( thePlayer ) ) then
 		outputDebugString(isFireOn)
