@@ -13,13 +13,13 @@ addEventHandler("playAlarmAroundTheArea", root, playAlarmAroundTheArea)
 
 function playPagerSfxAround()
 	local x, y, z = getElementPosition(source)
-	local pagerSound = playSound3D("pager.mp3", x, y, z) -- Here. Doesnt get the x y z.
+	local pagerSound = playSound3D("pager.mp3", x, y, z) -- Aqui. Não obtém o  x y z.
 	setSoundVolume(pagerSound, 0.8)
 end
 addEvent("playPagerSfxAround", true)
 addEventHandler("playPagerSfxAround", root, playPagerSfxAround)  
 
 --
--- This is where I get most problems. What it is supposed to do: play alarm.mp3 at fire station, and play pager.mp3 at every FD members coordinates (as well as outputChatBox to all FD members)
+-- Aqui é onde eu recebo mais problemas. O que é suposto fazer: tocar alarm.mp3 no posto de bombeiros, e tocar pager.mp3 em todas as coordenadas dos membros do FD (assim como o outputChatBox para todos os membros do FD)
 
--- What it does right now: plays sound at FD, sends outputChatBox TWICE and doesn't play pager because it does not get the fd members coordinates.k
+-- O que faz agora: toca o som no FD, envia o outputChatBox TWICE e não reproduz o pager porque ele não obtém as coordenadas dos membros do fd.k
