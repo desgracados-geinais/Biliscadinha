@@ -15,7 +15,7 @@ function startTheFire (fX,fY,fZ)
     setSoundMaxDistance(Soundtwo, 70)
 	
     outputDebugString("Playing LSFD alarm ...")
-    -- setSoundVolume( Sound, 1 )
+    -- Definir o volume do som (som, 1)
 
 	local fire = engineLoadDFF("fire.dff",1)
 	engineReplaceModel(fire,fireModel)
