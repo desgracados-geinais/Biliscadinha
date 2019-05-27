@@ -44,20 +44,20 @@ function pedTalk(state)
 		--outputChatBox("The fee is $".. exports.global:formatMoney(serverRegFee) .. " per vehicle.", source, 200, 200, 200)
 	elseif (state == 2) then
 		--exports.global:sendLocalText(source, "[English] Gabrielle McCoy says: Sorry but the fee to register new plates is $" .. exports.global:formatMoney(serverRegFee) .. ". Please come back once you have the money.", 255, 255, 255, 10)
-		outputChatBox(source, "You lack of GCs to activate this feature.", 255,0,0)
+		outputChatBox(source, "Você não tem GCs para ativar este recurso.", 255,0,0)
 	elseif (state == 3) then
 		--exports.global:sendLocalText(source, "[English] Gabrielle McCoy says: That is great! Lets get everything set up for you in our system.", 255, 255, 255, 10)
 	elseif (state == 4) then
-		exports.global:sendLocalText(source, "[English] Gabrielle McCoy says: No? Well I hope you change your mind later. Have a nice day!", 255, 255, 255, 10)
+		exports.global:sendLocalText(source, "[Português] Gabrielle McCoy diz: Não? Bem, eu espero que você mude de idéia mais tarde. Tenha um bom dia!", 255, 255, 255, 10)
 	elseif (state == 5) then
-		exports.global:sendLocalText(source, " *Gabrielle McCoy begins inputting the information into her computer.", 255, 51, 102)
-		exports.global:sendLocalText(source, "[English] Gabrielle McCoy says: Alright, you should be good to go. Have a nice day!", 255, 255, 255, 10)
+		exports.global:sendLocalText(source, " * Gabrielle McCoy começa a inserir as informações em seu computador.", 255, 51, 102)
+		exports.global:sendLocalText(source, "[Português]Gabrielle McCoy diz: Tudo bem, você deveria estar pronto para ir. Tenha um bom dia!", 255, 255, 255, 10)
 	elseif (state == 6) then
-		exports.global:sendLocalText(source, "[English] Gabrielle McCoy says: Hmmm. According to our records, that is already a registered license plate.", 255, 255, 255, 10)
+		exports.global:sendLocalText(source, "[Português] Gabrielle McCoy diz: Hmmm. De acordo com nossos registros, isso já é uma placa registrada.", 255, 255, 255, 10)
 	elseif (state == 7) then
-		exports.global:sendLocalText(source, "[English] Gabrielle McCoy says: Well, I'm sorry but your vehicle doesn't require a registered plate or papers.", 255, 255, 255, 10)
+		exports.global:sendLocalText(source, "[Português] Gabrielle McCoy diz: Bem, me desculpe, mas seu veículo não exige uma placa ou documentos registrados.", 255, 255, 255, 10)
 	elseif (state == 8) then
-		exports.global:sendLocalText(source, "[English] Gabrielle McCoy says: I'm sorry but are you the owner of this vehicle on papers?", 255, 255, 255, 10)
+		exports.global:sendLocalText(source, "[Português] Gabrielle McCoy diz: Me desculpe, mas você é o dono deste veículo nos jornais?", 255, 255, 255, 10)
 	end
 end
 addEvent("platePedTalk", true)
@@ -65,7 +65,7 @@ addEventHandler("platePedTalk", getRootElement(), pedTalk)
 
 function setNewInfo(data, car)
 	if not (data) or not (car) then
-		outputChatBox("Internal Error", source, 255,0,0)
+		outputChatBox("Erro interno", source, 255,0,0)
 		return false
 	end
 

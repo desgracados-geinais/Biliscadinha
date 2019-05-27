@@ -47,7 +47,7 @@ function changeWeather()
 		--outputDebugString("wtfman2")
 		currentWeather[3] = weatherStates[currentWeather[1]][math.random(1, #weatherStates[currentWeather[1]])]
 		--outputDebugString("wtfman3")
-		exports.global:sendMessageToAdmins("Weather changing to "..currentWeather[1]..":"..currentWeather[3] .." for "..	currentWeather[2] .. " second(s).")
+		exports.global:sendMessageToAdmins("Tempo mudando para "..currentWeather[1]..":"..currentWeather[3] .." para "..	currentWeather[2] .. " segundo (s).")
 		--outputDebugString("wtfman4")
 		-- Shift weather
 		triggerClientEvent("weather:update", getRootElement(), currentWeather[3], true)
@@ -72,7 +72,7 @@ end
 function getWeatherRawr(tp)
 	if exports.integration:isPlayerTrialAdmin(tp) then
 		local weather = getWeather()
-		outputChatBox("Weather: " .. weather, tp)
+		outputChatBox("Clima: " .. weather, tp)
 	end
 end
 addCommandHandler("getweather", getWeatherRawr)
@@ -81,7 +81,7 @@ function eta(tp)
 	if exports.integration:isPlayerTrialAdmin(tp) then
 		local timed = weatherStartTime + currentWeather[2]
 		local realtime = getRealTime( timed - 3600  )
-		outputChatBox("Time of next change: "..realtime.hour .. ":"..realtime.minute, tp)
+		outputChatBox("Hora da próxima mudança: "..realtime.hour .. ":"..realtime.minute, tp)
 	end
 end
 addCommandHandler("eta", eta)
@@ -89,13 +89,13 @@ addCommandHandler("eta", eta)
 function srl(tp, commandName, rainLevel)
 	if exports.integration:isPlayerTrialAdmin(tp) then
 		if not rainLevel or tonumber(rainLevel) > 40 then
-		outputChatBox("Invalid level entered.", tp)
+		outputChatBox("Nível inválido digitado.", tp)
 		else
 		setRainLevel(rainLevel)
 		local rank = exports.global:getPlayerAdminTitle(tp)
 		local name = getPlayerName(tp):gsub("_"," ")
-		exports.global:sendMessageToAdmins("AdmCmd: "..rank.." "..name.." set the rain level to: "..rainLevel)
-		outputChatBox("Set rain level to: "..rainLevel, tp)
+		exports.global:sendMessageToAdmins("AdmCmd: "..rank.." "..name.." definiu o nível da chuva para: "..rainLevel)
+		outputChatBox("Definir o nível de chuva para: "..rainLevel, tp)
 		end
 	end
 end
@@ -110,8 +110,8 @@ function sw(tp, commandName, weather)
 			triggerClientEvent("weather:update", getRootElement(), tonumber(weather), false)
 			local rank = exports.global:getPlayerAdminTitle(tp)
 			local name = getPlayerName(tp):gsub("_"," ")
-			exports.global:sendMessageToAdmins("AdmCmd: "..rank.." "..name.." set the weather to ID: "..weather)
-			outputChatBox("Weather set to ID: "..weather, tp)
+			exports.global:sendMessageToAdmins("AdmCmd: "..rank.." "..name.." definir o tempo para ID: "..weather)
+			outputChatBox("Tempo definido para ID: "..weather, tp)
 			local weatherID = weather
 			local weatherSQLUpdate = mysql:query_free("UPDATE `settings` SET `value`='" .. weatherID .. "' WHERE `name`='weather'")
 			if weatherSQLUpdate then
@@ -134,8 +134,8 @@ function swb(tp, commandName, weather)
 			setWeatherBlended(tonumber(weather))
 			local rank = exports.global:getPlayerAdminTitle(tp)
 			local name = getPlayerName(tp):gsub("_"," ")
-			exports.global:sendMessageToAdmins("AdmCmd: "..rank.." "..name.." blended the weather to ID: "..weather)
-			outputChatBox("Blending weather to set ID: "..weather, tp)
+			exports.global:sendMessageToAdmins("AdmCmd: "..rank.." "..name.." misturou o tempo para ID: "..weather)
+			outputChatBox("Misturando o tempo para definir o ID: "..weather, tp)
 		end
 	end
 end
@@ -150,7 +150,7 @@ function swh(tp, commandName, height)
 			local rank = exports.global:getPlayerAdminTitle(tp)
 			local name = getPlayerName(tp):gsub("_"," ")
 			exports.global:sendMessageToAdmins("AdmCmd: "..rank.." "..name.." set the wave height to: "..height)
-			outputChatBox("Setting wave height to: "..height, tp)
+			outputChatBox("Definir a altura da onda para: "..height, tp)
 		end
 	end
 end
@@ -254,7 +254,7 @@ function etan(tp, command)
 			changeWeather()
 			local timed = weatherStartTime + currentWeather[2]
 			local realtime = getRealTime( timed - 3600  )
-			outputChatBox("Time of change: "..realtime.hour .. ":"..realtime.minute, tp)
+			outputChatBox("Hora da mudança: "..realtime.hour .. ":"..realtime.minute, tp)
 		end
 	end
 end

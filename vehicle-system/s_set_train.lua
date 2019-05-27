@@ -12,13 +12,13 @@ addCommandHandler("settrainrailed",
                                         else
                                                 setTrainDerailed(vehicle, true)
                                         end
-                                        outputChatBox("You set a train (#" .. vehicleID .. ") " .. (state == 0 and "railed" or "derailed") .. ".", player, 0, 255, 0, false)
+                                        outputChatBox("Você define um trem (#" .. vehicleID .. ") " .. (state == 0 and "railed" or "derailed") .. ".", player, 0, 255, 0, false)
                                         exports.logs:logMessage("[TRAINRAIL] " .. getPlayerName(player) .. " set a train " .. (state == 0 and "railed" or "derailed") .. " (#" .. vehicleID .. ")", 9)
                                 else
-                                        outputChatBox("Vehicle not found.", player, 255, 0, 0, false)
+                                        outputChatBox("Veículo não encontrado.", player, 255, 0, 0, false)
                                 end
                         else
-                                outputChatBox("SYNTAX: /" .. cmd .. " [vehicle id] [0- Railed, 1- Derailed]", player, 255, 194, 14, false)
+                                outputChatBox("SYNTAX: /" .. cmd .. " [veículo id] [0- Trilhos, 1- Descarrilou]", player, 255, 194, 14, false)
                         end
                 end
         end, false, false
@@ -38,12 +38,12 @@ addCommandHandler("settraindirection",
                                                 setTrainDirection(vehicle, false)
                                         end
                                         outputChatBox("You set a train (#" .. vehicleID .. ") " .. (state == 0 and "CW" or "CCW") .. ".", player, 0, 255, 0, false)
-                                        exports.logs:logMessage("[TRAINDIR] " .. getPlayerName(player) .. " set a train direction to " .. (state == 0 and "clockwise" or "counterclockwise") .. " (#" .. vehicleID .. ")", 9)
+                                        exports.logs:logMessage("[TRAINDIR] " .. getPlayerName(player) .. " definir uma direção de trem para " .. (state == 0 and "clockwise" or "counterclockwise") .. " (#" .. vehicleID .. ")", 9)
                                 else
-                                        outputChatBox("Vehicle not found.", player, 255, 0, 0, false)
+                                        outputChatBox("Veículo não encontrado.", player, 255, 0, 0, false)
                                 end
                         else
-                                outputChatBox("SYNTAX: /" .. cmd .. " [vehicle id] [0- CW, 1- CCW]", player, 255, 194, 14, false)
+                                outputChatBox("SYNTAX: /" .. cmd .. " [veículo id] [0- CW, 1- CCW]", player, 255, 194, 14, false)
                         end
                 end
         end, false, false

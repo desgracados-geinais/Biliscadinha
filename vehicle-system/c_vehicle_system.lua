@@ -13,35 +13,35 @@ function build_SaleGUI()
 	local windowWidth, windowHeight = 400, 252
 	local left = screenWidth/2 - windowWidth/2
 	local top = screenHeight/2 - windowHeight/2
-	gui["_root"] = guiCreateWindow(left, top, windowWidth, windowHeight, "Department of Motor Vehicles", false)
+	gui["_root"] = guiCreateWindow(left, top, windowWidth, windowHeight, "Departamento de veículos motorizados", false)
 	guiWindowSetSizable(gui["_root"], false)
 	
-	gui["label"] = guiCreateLabel(170, 25, 70, 45, "Vehicle Sale", false, gui["_root"])
+	gui["label"] = guiCreateLabel(170, 25, 70, 45, "Venda de Veículos", false, gui["_root"])
 	guiLabelSetHorizontalAlign(gui["label"], "left", false)
 	guiLabelSetVerticalAlign(gui["label"], "center")
 	
-	gui["label_2"] = guiCreateLabel(30, 75, 331, 21, "By signing this document, I agree to grant all ownership", false, gui["_root"])
+	gui["label_2"] = guiCreateLabel(30, 75, 331, 21, "Ao assinar este documento, concordo em conceder toda a propriedade", false, gui["_root"])
 	guiLabelSetHorizontalAlign(gui["label_2"], "left", false)
 	guiLabelSetVerticalAlign(gui["label_2"], "center")
 
-	gui["label_3"] = guiCreateLabel(30, 95, 331, 21, "rights of this motor vehicle to this mentioned person.", false, gui["_root"])
+	gui["label_3"] = guiCreateLabel(30, 95, 331, 21, "direitos deste veículo a esta pessoa mencionada.", false, gui["_root"])
 	guiLabelSetHorizontalAlign(gui["label_3"], "left", false)
 	guiLabelSetVerticalAlign(gui["label_3"], "center")
 	
 	gui["lineEdit"] = guiCreateEdit(30, 155, 231, 21, "", false, gui["_root"])
 	guiEditSetMaxLength(gui["lineEdit"], 32767)
 	
-	gui["label_4"] = guiCreateLabel(30, 135, 150, 16, "New owner's name", false, gui["_root"])
+	gui["label_4"] = guiCreateLabel(30, 135, 150, 16, "Nome do novo proprietário", false, gui["_root"])
 	guiLabelSetHorizontalAlign(gui["label_4"], "left", false)
 	guiLabelSetVerticalAlign(gui["label_4"], "center")
 	
-	gui["pushButton"] = guiCreateButton(180, 195, 91, 31, "Sell", false, gui["_root"])	
+	gui["pushButton"] = guiCreateButton(180, 195, 91, 31, "Vender", false, gui["_root"])	
 	addEventHandler("onClientGUIClick", gui["pushButton"], function ()
 			triggerServerEvent("sellVehicle", getResourceRootElement(), localPlayer, "sell", guiGetText(gui["lineEdit"]))
 		end, false)
 
 	
-	gui["pushButton_2"] = guiCreateButton(290, 195, 91, 31, "Close", false, gui["_root"])
+	gui["pushButton_2"] = guiCreateButton(290, 195, 91, 31, "Fechar", false, gui["_root"])
 	addEventHandler("onClientGUIClick", gui["pushButton_2"], function ()
 			destroyElement(gui["_root"])
 			showCursor(false)

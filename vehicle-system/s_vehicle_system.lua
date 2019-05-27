@@ -72,20 +72,20 @@ function createPermVehicle(thePlayer, commandName, ...)
 					to = theTeam
 
 					if not exports.global:takeMoney(theTeam, cost) then
-						outputChatBox("[MAKEVEH] This faction cannot afford this vehicle.", thePlayer, 255, 0, 0)
-						outputChatBox("Your faction cannot afford this vehicle.", targetPlayer, 255, 0, 0)
+						outputChatBox("[MAKEVEH] Esta facção não pode pagar este veículo.", thePlayer, 255, 0, 0)
+						outputChatBox("Sua facção não pode pagar este veículo.", targetPlayer, 255, 0, 0)
 						return
 					end
 				else
 					factionVehicle = -1
 					to = targetPlayer
 					if not exports.global:takeMoney(targetPlayer, cost) then
-						outputChatBox("[MAKEVEH] This player cannot afford this vehicle.", thePlayer, 255, 0, 0)
-						outputChatBox("You cannot afford this vehicle.", targetPlayer, 255, 0, 0)
+						outputChatBox("[MAKEVEH] Este jogador não pode pagar por este veículo.", thePlayer, 255, 0, 0)
+						outputChatBox("Você não pode pagar este veículo.", targetPlayer, 255, 0, 0)
 						return
 					elseif not exports.global:canPlayerBuyVehicle(targetPlayer) then
-						outputChatBox("[MAKEVEH] This player has too many cars.", thePlayer, 255, 0, 0)
-						outputChatBox("You have too many cars.", targetPlayer, 255, 0, 0)
+						outputChatBox("[MAKEVEH] Este jogador tem muitos carros.", thePlayer, 255, 0, 0)
+						outputChatBox("Você tem carros demais.", targetPlayer, 255, 0, 0)
 						exports.global:giveMoney(targetPlayer, cost)
 						return
 					end
@@ -97,7 +97,7 @@ function createPermVehicle(thePlayer, commandName, ...)
 
 				local veh = createVehicle(id, x, y, z, 0, 0, r, plate)
 				if not (veh) then
-					outputChatBox("Invalid Vehicle ID.", thePlayer, 255, 0, 0)
+					outputChatBox("ID do veículo inválido.", thePlayer, 255, 0, 0)
 					exports.global:giveMoney(to, cost)
 				else
 					setVehicleColor(veh, col1, col2, col1, col2)
@@ -141,22 +141,22 @@ function createPermVehicle(thePlayer, commandName, ...)
 
 						if (hiddenAdmin==0) then
 							exports.global:sendMessageToAdmins("AdmCmd: " .. tostring(adminTitle) .. " " .. getPlayerName(thePlayer) .. " ("..adminUsername..") has spawned a "..vehicleName .. " (ID #" .. insertid .. ") to "..owner.." for $"..cost..".")
-							outputChatBox(tostring(adminTitle) .. " " .. getPlayerName(thePlayer) .. " has spawned a "..vehicleName .. " (ID #" .. insertid .. ") to "..owner.." for $"..cost..".", targetPlayer, 255, 194, 14)
+							outputChatBox(tostring(adminTitle) .. " " .. getPlayerName(thePlayer) .. " gerou um "..vehicleName .. " (ID #" .. insertid .. ") para "..owner.." para $"..cost..".", targetPlayer, 255, 194, 14)
 						else
 							exports.global:sendMessageToAdmins("AdmCmd: A Hidden Admin has spawned a "..vehicleName .. " (ID #" .. insertid .. ") to "..owner.." for $"..cost..".")
-							outputChatBox("A Hidden Admin has spawned a "..vehicleName .. " (ID #" .. insertid .. ") to "..owner.." for $"..cost..".", targetPlayer, 255, 194, 14)
+							outputChatBox("Um administrador oculto gerou um "..vehicleName .. " (ID #" .. insertid .. ") para "..owner.." para $"..cost..".", targetPlayer, 255, 194, 14)
 						end
-						outputChatBox("[MAKEVEH] "..vehicleName .. " (ID #" .. insertid .. ") successfully spawned to "..owner..".", thePlayer, 0, 255, 0)
+						outputChatBox("[MAKEVEH] "..vehicleName .. " (ID #" .. insertid .. ") gerou com sucesso"..owner..".", thePlayer, 0, 255, 0)
 
 						local content = "[B]Spawned to username/faction:[/B][INDENT]"..owner.."[/INDENT][B]Vehicle name: [/B][INDENT](("..vehicleName..")) "..vehShopData.vehyear.. " " ..vehShopData.vehbrand.. " " ..vehShopData.vehmodel.. "[/INDENT][B]Amount: [/B][INDENT]$"..cost.."[/INDENT][B]Unique ID: [/B][INDENT]"..insertid..".[/INDENT][INDENT][/INDENT][U][I]Note: Please make a reply to this post with any additional information you may have.[/I][/U]"
 						exports["integration"]:createForumThread(thePlayer, thePlayer, 318, "/"..commandName.." $"..cost.." to ("..owner..") "..vehShopData.vehyear.. " " ..vehShopData.vehbrand.. " " ..vehShopData.vehmodel, content, "Please make a reply to this post with any additional information you may have")
-						outputChatBox("Please reply to http://forums.owlgaming.net/forumdisplay.php?318-Vehicles with any information you may need to add.", thePlayer, 255, 0, 0)
+						outputChatBox("Por favor, responda a http://forums.owlgaming.net/forumdisplay.php?318-Vehicles com qualquer informação que você precise adicionar.", thePlayer, 255, 0, 0)
 						if factionVehicle == -1 then
-							outputChatBox("[MAKEVEH] $"..cost.." has been taken from player's inventory.", thePlayer, 0, 255, 0)
-							outputChatBox("$"..cost.." has been taken from your inventory.", targetPlayer, 0, 255, 0)
+							outputChatBox("[MAKEVEH] $"..cost.." foi retirado do inventário do jogador.", thePlayer, 0, 255, 0)
+							outputChatBox("$"..cost.." foi retirado do seu inventário.", targetPlayer, 0, 255, 0)
 						else
-							outputChatBox("[MAKEVEH] $"..cost.." has been taken from player's faction bank.", thePlayer, 0, 255, 0)
-							outputChatBox("$"..cost.." has been taken from your faction bank.", targetPlayer, 0, 255, 0)
+							outputChatBox("[MAKEVEH] $"..cost.." foi retirado do banco de facções do jogador.", thePlayer, 0, 255, 0)
+							outputChatBox("$"..cost.." foi tirado do seu banco de facções.", targetPlayer, 0, 255, 0)
 						end
 
 						reloadVehicle(tonumber(insertid))
@@ -170,8 +170,8 @@ addCommandHandler("makeveh", createPermVehicle, false, false)
 
 function printMakeVehError(thePlayer, commandName )
 	outputChatBox("SYNTAX: /" .. commandName .. " [ID from Veh Lib] [color1] [color2] [Owner] [Faction Vehicle (1/0)] [-1=carshop price] [Tinted Windows] ", thePlayer, 255, 194, 14)
-	outputChatBox("NOTE: If it is a faction vehicle, ownership will be given to the 'owner''s faction.", thePlayer, 255, 194, 14)
-	outputChatBox("NOTE: If it is a faction vehicle, the cost is taken from the faction fund, rather than the player.", thePlayer, 255, 194, 14)
+	outputChatBox("NOTA: Se for um veículo facção, a propriedade será dada ao 'proprietário' da facção.", thePlayer, 255, 194, 14)
+	outputChatBox("NOTA: Se for um veículo de facção, o custo é retirado do fundo de facção, em vez do jogador.", thePlayer, 255, 194, 14)
 end
 
 -- /makecivveh
@@ -222,7 +222,7 @@ function createCivilianPermVehicle(thePlayer, commandName, ...)
 
 			local veh = createVehicle(id, x, y, z, 0, 0, r, plate)
 			if not (veh) then
-				outputChatBox("Invalid Vehicle ID.", thePlayer, 255, 0, 0)
+				outputChatBox("ID do veículo inválido.", thePlayer, 255, 0, 0)
 			else
 				local vehicleName = getVehicleName(veh)
 				destroyElement(veh)
@@ -238,7 +238,7 @@ function createCivilianPermVehicle(thePlayer, commandName, ...)
 					local adminID = getElementData(thePlayer, "account:id")
 					local addLog = mysql:query_free("INSERT INTO `vehicle_logs` (`vehID`, `action`, `actor`) VALUES ('"..tostring(insertid).."', '"..commandName.." "..vehicleName.." (job "..job..")', '"..adminID.."')") or false
 					if not addLog then
-						outputDebugString("Failed to add vehicle logs.")
+						outputDebugString("Falha ao adicionar registros do veículo.")
 					end
 				end
 			end
@@ -273,7 +273,7 @@ function loadAllVehicles(res)
 		end
 		setTimer(resume, 1000, 4)
 	else
-		outputDebugString( "loadAllVehicles failed" )
+		outputDebugString( "carregar todos os veículos, falhou" )
 	end
 end
 addEventHandler("onResourceStart", getResourceRootElement(), loadAllVehicles)
@@ -761,10 +761,10 @@ function toggleEngine(source, key, keystate)
 							exports.logs:dbLog("SYSTEM", 31, { veh, source } , "STARTED ENGINE")
 						elseif fuel <= 0 then
 							triggerEvent('sendAme', source, "attempts to turn the engine on and fails.")
-							outputChatBox("This vehicle has no fuel.", source)
+							outputChatBox("Este veículo não tem combustível.", source)
 						end
 					else
-						outputChatBox("You require a key to start this vehicle.", source, 255, 0, 0)
+						outputChatBox("Você precisa da chave para ligar este veículo.", source, 255, 0, 0)
 					end
 				else
 					toggleControl(source, 'brake_reverse', false)
@@ -805,7 +805,7 @@ function toggleLock(source, key, keystate)
 							triggerEvent('sendAme', source, "locks the vehicle doors.")
 						end
 					else
-						outputChatBox("(( You can't lock impounded vehicles. ))", source, 255, 195, 14)
+						outputChatBox("(( Você não pode bloquear veículos apreendidos. ))", source, 255, 195, 14)
 					end
 				--else
 					--outputChatBox("(( You can't lock civilian vehicles. ))", source, 255, 195, 14)
@@ -902,7 +902,7 @@ addEventHandler('togLightsVehicle', root,
 function checkBikeLock(thePlayer)
 	if (isVehicleLocked(source)) and (getVehicleType(source)=="Bike" or getVehicleType(source)=="Boat" or getVehicleType(source)=="BMX" or getVehicleType(source)=="Quad" or getElementModel(source)==568 or getElementModel(source)==571 or getElementModel(source)==572 or getElementModel(source)==424 or getElementModel(source)==431 or getElementModel(source)==437) then
 		if not getElementData(thePlayer, "interiormarker") then
-			outputChatBox("That vehicle is locked.", thePlayer, 255, 194, 15)
+			outputChatBox("Esse veículo está trancado.", thePlayer, 255, 194, 15)
 		end
 		cancelEvent()
 	end
@@ -928,25 +928,25 @@ function setRealInVehicle(thePlayer)
 
 		if owner < 0 and faction == -1 then
 			if brand then
-				outputChatBox("(( This "..year.." "..brand.." "..model.." is a civilian vehicle. ))", thePlayer, 255, 194, 14)
+				outputChatBox("(( Este "..year.." "..brand.." "..model.." é um veículo civil. ))", thePlayer, 255, 194, 14)
 			else
-				outputChatBox("(( This "..carName.." is a civilian vehicle. ))", thePlayer, 255, 194, 14)
+				outputChatBox("(( Este "..carName.." é um veículo civil. ))", thePlayer, 255, 194, 14)
 			end
 		elseif (faction==-1) and (owner>0) then
 			local ownerName = exports['cache']:getCharacterName(owner)
 
 			if ownerName then
 				if brand then
-					outputChatBox("(( This "..year.." "..brand.." "..model.." belongs to " .. ownerName .. ". ))", thePlayer, 255, 194, 14)
+					outputChatBox("(( Este "..year.." "..brand.." "..model.." pertence a " .. ownerName .. ". ))", thePlayer, 255, 194, 14)
 				else
-					outputChatBox("(( This "..carName.." belongs to " .. ownerName .. ". ))", thePlayer, 255, 194, 14)
+					outputChatBox("(( Este "..carName.." pertence a " .. ownerName .. ". ))", thePlayer, 255, 194, 14)
 				end
 				if (getElementData(source, "Impounded") > 0) then
 					local output = getRealTime().yearday-getElementData(source, "Impounded")
 					if brand then
-						outputChatBox("(( This "..year.." "..brand.." "..model.." has been Impounded for: " .. output .. (output == 1 and " Day." or " Days.") .. " ))", thePlayer, 255, 194, 14)
+						outputChatBox("(( Este "..year.." "..brand.." "..model.." foi preso por: " .. output .. (output == 1 and " Day." or " Days.") .. " ))", thePlayer, 255, 194, 14)
 					else
-						outputChatBox("(( This "..carName.." has been Impounded for: " .. output .. (output == 1 and " Day." or " Days.") .. " ))", thePlayer, 255, 194, 14)
+						outputChatBox("(( Este "..carName.." foi preso por: " .. output .. (output == 1 and " Day." or " Days.") .. " ))", thePlayer, 255, 194, 14)
 					end
 				end
 			end
@@ -989,9 +989,9 @@ function removeFromFactionVehicle(thePlayer)
 		if (faction~=vfaction) and (seat==0) then
 			if (CanTowDriverEnter) then
 				if brand then
-					outputChatBox("(( This "..year.." "..brand.." "..model.." belongs to '" .. factionName .. "'. ))", thePlayer, 255, 194, 14)
+					outputChatBox("(( Este "..year.." "..brand.." "..model.." pertence a '" .. factionName .. "'. ))", thePlayer, 255, 194, 14)
 				else
-					outputChatBox("(( This "..getVehicleName(source).." belongs to '" .. factionName .. "'. ))", thePlayer, 255, 194, 14)
+					outputChatBox("(( Este "..getVehicleName(source).." pertence a '" .. factionName .. "'. ))", thePlayer, 255, 194, 14)
 				end
 				exports.anticheat:changeProtectedElementDataEx(source, "enginebroke", 1, false)
 				setVehicleDamageProof(source, true)
@@ -999,9 +999,9 @@ function removeFromFactionVehicle(thePlayer)
 				return
 			end
 			if brand then
-				outputChatBox("(( This "..year.." "..brand.." "..model.." belongs to '" .. factionName .. "'. ))", thePlayer, 255, 194, 14)
+				outputChatBox("(( Este "..year.." "..brand.." "..model.." pertence a '" .. factionName .. "'. ))", thePlayer, 255, 194, 14)
 			else
-				outputChatBox("(( This "..getVehicleName(source).." belongs to '" .. factionName .. "'. ))", thePlayer, 255, 194, 14)
+				outputChatBox("(( Este "..getVehicleName(source).." pertence a '" .. factionName .. "'. ))", thePlayer, 255, 194, 14)
 			end
 		end
 	end
@@ -1084,9 +1084,9 @@ function sellVehicle(thePlayer, commandName, targetPlayerName)
 	-- can only sell vehicles outdoor, in a dimension is property
 	if isPedInVehicle(thePlayer) then
 		if not targetPlayerName then
-			outputChatBox("SYNTAX: /" .. commandName .. " [partial player name / id]", thePlayer, 255, 194, 14)
-			outputChatBox("Sells the Vehicle you're in to that Player.", thePlayer, 255, 194, 14)
-			outputChatBox("Ask the buyer to use /pay to recieve the money for the vehicle.", thePlayer, 255, 194, 14)
+			outputChatBox("SYNTAX: /" .. commandName .. " [nome parcial / id]", thePlayer, 255, 194, 14)
+			outputChatBox("Vende o veículo em que você está aquele jogador.", thePlayer, 255, 194, 14)
+			outputChatBox("Peça ao comprador para usar /pay para receber o dinheiro do veículo.", thePlayer, 255, 194, 14)
 		else
 			local targetPlayer, targetPlayerName = exports.global:findPlayerByPartialNick(thePlayer, targetPlayerName)
 			if targetPlayer and getElementData(targetPlayer, "dbid") then
@@ -1115,44 +1115,44 @@ function sellVehicle(thePlayer, commandName, targetPlayerName)
 
 												exports.logs:logMessage("[SELL] car #" .. vehicleID .. " was sold from " .. getPlayerName(thePlayer):gsub("_", " ") .. " to " .. targetPlayerName, 9)
 
-												outputChatBox("You've successfully sold your " .. getVehicleName(theVehicle) .. " to " .. targetPlayerName .. ".", thePlayer, 0, 255, 0)
-												outputChatBox((getPlayerName(thePlayer):gsub("_", " ")) .. " sold you a " .. getVehicleName(theVehicle) .. ".", targetPlayer, 0, 255, 0)
-												outputChatBox("Please remember to /park your " .. getVehicleName(theVehicle) .. ".", targetPlayer, 255, 255, 0)
+												outputChatBox("Você vendeu com sucesso seu " .. getVehicleName(theVehicle) .. " para " .. targetPlayerName .. ".", thePlayer, 0, 255, 0)
+												outputChatBox((getPlayerName(thePlayer):gsub("_", " ")) .. " Te vendi um " .. getVehicleName(theVehicle) .. ".", targetPlayer, 0, 255, 0)
+												outputChatBox("Por favor lembre-se de /park seu " .. getVehicleName(theVehicle) .. ".", targetPlayer, 255, 255, 0)
 
 
 
 												local adminID = getElementData(thePlayer, "account:id")
 												local addLog = mysql:query_free("INSERT INTO `vehicle_logs` (`vehID`, `action`, `actor`) VALUES ('"..tostring(vehicleID).."', '"..commandName.." to "..getPlayerName(targetPlayer).."', '"..adminID.."')") or false
 												if not addLog then
-													outputDebugString("Failed to add vehicle logs.")
+													outputDebugString("Falha ao adicionar registros do veículo.")
 												end
 												exports.logs:dbLog(thePlayer, 6, { theVehicle, thePlayer, targetPlayer }, "SELL '".. getVehicleName(theVehicle).."' '".. (getPlayerName(thePlayer):gsub("_", " ")) .."' => '".. targetPlayerName .."'")
 
 											else
-												outputChatBox("Unable to process request - report on bugs.mta.vg.", thePlayer, 255, 0, 0)
+												outputChatBox("Não é possível processar a solicitação - informe sobre bugs", thePlayer, 255, 0, 0)
 											end
 										--else
 											--outputChatBox("You can not sell special vehicles. Contact an admin via F2 to have it refunded.", thePlayer, 255, 0, 0)
 										--end
 									else
-										outputChatBox(targetPlayerName .. " has already too much vehicles.", thePlayer, 255, 0, 0)
-										outputChatBox((getPlayerName(thePlayer):gsub("_", " ")) .. " tried to sell you a car, but you have too much cars already.", targetPlayer, 255, 0, 0)
+										outputChatBox(targetPlayerName .. " já tem muitos veículos.", thePlayer, 255, 0, 0)
+										outputChatBox((getPlayerName(thePlayer):gsub("_", " ")) .. " tentou te vender um carro, mas você já tem carros demais.", targetPlayer, 255, 0, 0)
 									end
 								else
-									outputChatBox(targetPlayerName .. " has no space for the vehicle keys.", thePlayer, 255, 0, 0)
-									outputChatBox((getPlayerName(thePlayer):gsub("_", " ")) .. " tried to sell you a car, but you haven't got space for a key.", targetPlayer, 255, 0, 0)
+									outputChatBox(targetPlayerName .. " não tem espaço para as chaves do veículo.", thePlayer, 255, 0, 0)
+									outputChatBox((getPlayerName(thePlayer):gsub("_", " ")) .. " tentou te vender um carro, mas você não tem espaço para uma chave.", targetPlayer, 255, 0, 0)
 								end
 							else
 								outputChatBox("You can't sell your own vehicle to yourself.", thePlayer, 255, 0, 0)
 							end
 						else
-							outputChatBox("This vehicle is not yours.", thePlayer, 255, 0, 0)
+							outputChatBox("Este veículo não é seu.", thePlayer, 255, 0, 0)
 						end
 					else
-						outputChatBox("You must be in a Vehicle.", thePlayer, 255, 0, 0)
+						outputChatBox("Você deve estar em um veículo.", thePlayer, 255, 0, 0)
 					end
 				else
-					outputChatBox("You are too far away from " .. targetPlayerName .. ".", thePlayer, 255, 0, 0)
+					outputChatBox("Você está muito longe de " .. targetPlayerName .. ".", thePlayer, 255, 0, 0)
 				end
 			end
 		end
@@ -1166,15 +1166,15 @@ function toggleSellExceptions (thePlayer, commandName, player)
 		local targetPlayer, targetPlayerName = exports.global:findPlayerByPartialNick(thePlayer, player)
 		if getElementData(targetPlayer, "temporarySell") == true then
 			setElementData(targetPlayer, "temporarySell", false)
-			outputChatBox("You have revoked "..targetPlayerName.." temporary access to use /sell.", thePlayer)
-			outputChatBox("An administrator has revoked your temporary access to use /sell.", targetPlayer)
+			outputChatBox("Você revogou "..targetPlayerName.." acesso temporário para uso /sell.", thePlayer)
+			outputChatBox("Um administrador revogou seu acesso temporário para uso /sell.", targetPlayer)
 		else
 			setElementData(targetPlayer, "temporarySell", true)
-			outputChatBox("You have given "..targetPlayerName.." temporary access to use /sell.", thePlayer)
-			outputChatBox("An administrator has given you temporary access to use /sell.", targetPlayer)
+			outputChatBox("Você deu "..targetPlayerName.." acesso temporário para uso /sell.", thePlayer)
+			outputChatBox("Um administrador deu a você acesso temporário para usar /sell.", targetPlayer)
 		end
 	elseif not player and (exports.integration:isPlayerTrialAdmin(thePlayer) or exports.integration:isPlayerSupporter(thePlayer)) then
-		outputChatBox("SYNTAX: /"..commandName.." [player] - This gives temporary access for old /sell.", thePlayer)
+		outputChatBox("SYNTAX: /"..commandName.." [player] - Isso dá acesso temporário para /sell.", thePlayer)
 	end
 end
 addCommandHandler("tempsell", toggleSellExceptions)
@@ -1184,8 +1184,8 @@ function AdminVehicleSale(thePlayer, commandName, args)
 		local vehType = getVehicleType(getPedOccupiedVehicle(thePlayer))
 		if ( vehType == ("Plane" or "Helicopter" or "Boat") or (getElementData(thePlayer, "temporarySell") == true ) or (exports.integration:isPlayerTrialAdmin(thePlayer) or exports.integration:isPlayerSupporter(thePlayer)) ) and not args then
 			outputChatBox("SYNTAX: /" .. commandName .. " [partial player name / id]", thePlayer, 255, 194, 14)
-			outputChatBox("Sells the Vehicle you're in to that Player.", thePlayer, 255, 194, 14)
-			outputChatBox("Ask the buyer to use /pay to recieve the money for the vehicle.", thePlayer, 255, 194, 14)
+			outputChatBox("Vende o veículo em que você está aquele jogador.", thePlayer, 255, 194, 14)
+			outputChatBox("Peça ao comprador para usar /pay para receber o dinheiro do veículo.", thePlayer, 255, 194, 14)
 		elseif ( vehType == ("Plane" or "Helicopter" or "Boat") or (getElementData(thePlayer, "temporarySell") == true ) or (exports.integration:isPlayerTrialAdmin(thePlayer) or exports.integration:isPlayerSupporter(thePlayer)) ) and args then
 			triggerEvent("sellVehicle", getResourceRootElement(), thePlayer, "sell", args)
 		end
@@ -1221,7 +1221,7 @@ function lockUnlockInside(vehicle)
 				end
 			end
 		else
-			outputChatBox("(( You can't lock impounded vehicles. ))", source, 255, 195, 14)
+			outputChatBox("((Você não pode bloquear veículos apreendidos.))", source, 255, 195, 14)
 		end
 	--else
 		--outputChatBox("(( You can't lock civilian vehicles. ))", source, 255, 195, 14)
@@ -1286,11 +1286,11 @@ function fillFuelTank(veh, fuel)
 	local engine = getElementData(veh, "engine")
 	local max = exports["fuel-system"]:getMaxFuel(getElementModel(veh))
 	if (math.ceil(currFuel)==max) then
-		outputChatBox("This vehicle is already full.", source)
+		outputChatBox("Este veículo já está cheio.", source)
 	elseif (fuel==0) then
-		outputChatBox("This fuel can is empty.", source, 255, 0, 0)
+		outputChatBox("Esta lata de combustível está vazia.", source, 255, 0, 0)
 	elseif (engine==1) then
-		outputChatBox("You can not fuel running vehicles. Please stop the engine first.", source, 255, 0, 0)
+		outputChatBox("Você não pode abastecer veículos em execução. Por favor, pare o motor primeiro.", source, 255, 0, 0)
 	else
 		local fuelAdded = fuel
 
@@ -1298,7 +1298,7 @@ function fillFuelTank(veh, fuel)
 			fuelAdded = max - currFuel
 		end
 
-		outputChatBox("You added " .. math.ceil(fuelAdded) .. " litres of petrol to your car from your fuel can.", source, 0, 255, 0 )
+		outputChatBox("Tu adicionaste " .. math.ceil(fuelAdded) .. " litros de gasolina para o seu carro da sua lata de combustível.", source, 0, 255, 0 )
 
 		local gender = getElementData(source, "gender")
 		local genderm = "his"
@@ -1320,7 +1320,7 @@ function getYearDay(thePlayer)
 	local time = getRealTime()
 	local currYearday = time.yearday
 
-	outputChatBox("Year day is " .. currYearday, thePlayer)
+	outputChatBox("O dia do ano é " .. currYearday, thePlayer)
 end
 addCommandHandler("yearday", getYearDay)
 
@@ -1376,14 +1376,14 @@ local HospitalCol = createColRectangle( 1166, -1384, 52, 92 )
 function setVehiclePosition(thePlayer, commandName)
 	local veh = getPedOccupiedVehicle(thePlayer)
 	if not veh or getElementData(thePlayer, "realinvehicle") == 0 then
-		outputChatBox("You are not in a vehicle.", thePlayer, 255, 0, 0)
+		outputChatBox("Você não está em um veículo.", thePlayer, 255, 0, 0)
 	else
 		if call( getResourceFromName("tow-system"), "cannotVehpos", thePlayer, veh ) and not exports.integration:isPlayerTrialAdmin(thePlayer) and not exports.integration:isPlayerSupporter(thePlayer) then
-			outputChatBox("It is not possible to park your vehicle here.", thePlayer, 255, 0, 0)
+			outputChatBox("Não é possível estacionar o seu veículo aqui.", thePlayer, 255, 0, 0)
 		elseif isElementWithinColShape( thePlayer, HospitalCol ) and getElementData( thePlayer, "faction" ) ~= 2 and not exports.integration:isPlayerTrialAdmin(thePlayer) and not exports.integration:isPlayerSupporter(thePlayer) then
-			outputChatBox("Only Los Santos Emergency Service is allowed to park their vehicles in front of the Hospital.", thePlayer, 255, 0, 0)
+			outputChatBox("Somente o serviço de emergência de Los Santos tem permissão para estacionar seus veículos em frente ao hospital.", thePlayer, 255, 0, 0)
 		elseif isElementWithinColShape( thePlayer, PershingSquareCol ) and getElementData( thePlayer, "faction" ) ~= 1  and not exports.integration:isPlayerTrialAdmin(thePlayer) and not exports.integration:isPlayerSupporter(thePlayer) then
-			outputChatBox("Only Los Santos Police Department is allowed to park their vehicles on Pershing Square.", thePlayer, 255, 0, 0)
+			outputChatBox("Apenas o Departamento de Polícia de Los Santos tem permissão para estacionar seus veículos na Praça Pershing.", thePlayer, 255, 0, 0)
 		else
 			local playerid = getElementData(thePlayer, "dbid")
 			local playerfl = getElementData(thePlayer, "factionleader")
@@ -1395,7 +1395,7 @@ function setVehiclePosition(thePlayer, commandName)
 			local TowingReturn = call(getResourceFromName("tow-system"), "CanTowTruckDriverVehPos", thePlayer) -- 2 == in towing and in col shape, 1 == colshape only, 0 == not in col shape
 			if (owner==playerid and TowingReturn == 0) or (exports.global:hasItem(thePlayer, 3, dbid)) or (TowingReturn == 2) or (exports.integration:isPlayerSupporter(thePlayer) and  exports.logs:logMessage("[AVEHPOS] " .. getPlayerName( thePlayer ) .. " parked car #" .. dbid .. " at " .. x .. ", " .. y .. ", " .. z, 9)) or (exports.integration:isPlayerTrialAdmin(thePlayer) and exports.logs:logMessage("[AVEHPOS] " .. getPlayerName( thePlayer ) .. " parked car #" .. dbid .. " at " .. x .. ", " .. y .. ", " .. z, 9)) then
 				if (dbid<0) then
-					outputChatBox("This vehicle is not permanently spawned.", thePlayer, 255, 0, 0)
+					outputChatBox("Este veículo não é gerado permanentemente.", thePlayer, 255, 0, 0)
 				else
 					if (call(getResourceFromName("tow-system"), "CanTowTruckDriverGetPaid", thePlayer)) then
 						-- pd has to pay for this impound
@@ -1413,7 +1413,7 @@ function setVehiclePosition(thePlayer, commandName)
 					exports.anticheat:changeProtectedElementDataEx(veh, "respawnposition", {x, y, z, rx, ry, rz}, false)
 					exports.anticheat:changeProtectedElementDataEx(veh, "interior", interior)
 					exports.anticheat:changeProtectedElementDataEx(veh, "dimension", dimension)
-					outputChatBox("Vehicle spawn position set.", thePlayer)
+					outputChatBox("Conjunto de posição de criação de veículo.", thePlayer)
 					exports.logs:dbLog(thePlayer, 4, {  veh }, "PARK")
 
 					local adminID = getElementData(thePlayer, "account:id")
@@ -1436,7 +1436,7 @@ function setVehiclePosition(thePlayer, commandName)
 					if ( getElementData(veh, "Impounded") or 0 ) > 0 then
 						local owner = getPlayerFromName( exports['cache']:getCharacterName( getElementData( veh, "owner" ) ) )
 						if isElement( owner ) and exports.global:hasItem( owner, 2 ) then
-							outputChatBox("((SFT&R)) #5555 [SMS]: Your " .. getVehicleName(veh) .. " has been impounded. Head over to the impound to release it.", owner, 120, 255, 80)
+							outputChatBox("((SFT&R)) #5555 [SMS]: Seu " .. getVehicleName(veh) .. " foi apreendido. Vá até o confisco para liberá-lo. /park ", owner, 120, 255, 80)
 						end
 					end
 				end
@@ -1517,7 +1517,7 @@ function setVehiclePosition2(thePlayer, commandName, vehicleID)
 				exports.anticheat:changeProtectedElementDataEx(veh, "respawnposition", {x, y, z, rx, ry, rz}, false)
 				exports.anticheat:changeProtectedElementDataEx(veh, "interior", interior)
 				exports.anticheat:changeProtectedElementDataEx(veh, "dimension", dimension)
-				outputChatBox("Vehicle spawn position for #" .. vehicleID .. " set.", thePlayer)
+				outputChatBox("Posição de criação do veículo para #" .. vehicleID .. " conjunto.", thePlayer)
 				exports.logs:dbLog(thePlayer, 4, {  veh }, "PARK")
 				for key, value in ipairs(destroyTimers) do
 					if (tonumber(destroyTimers[key][2]) == vehicleID) then
@@ -1533,12 +1533,12 @@ function setVehiclePosition2(thePlayer, commandName, vehicleID)
 				if ( getElementData(veh, "Impounded") or 0 ) > 0 then
 					local owner = getPlayerFromName( exports['cache']:getCharacterName( getElementData( veh, "owner" ) ) )
 					if isElement( owner ) and exports.global:hasItem( owner, 2 ) then
-						outputChatBox("((SFT&R)) #5555 [SMS]: Your " .. getVehicleName(veh) .. " has been impounded. Head over to the impound to release it.", owner, 120, 255, 80)
+						outputChatBox("((SFT&R)) #5555 [SMS]: Seu " .. getVehicleName(veh) .. " foi apreendido. Vá até o confisco para liberá-lo. /apark ", owner, 120, 255, 80)
 					end
 				end
 				exports.logs:logMessage("[AVEHPOS] " .. getPlayerName( thePlayer ) .. " parked car #" .. vehicleID .. " at " .. x .. ", " .. y .. ", " .. z, 9)
 			else
-				outputChatBox("Vehicle not found.", thePlayer, 255, 0, 0 )
+				outputChatBox("Veículo não encontrado.", thePlayer, 255, 0, 0 )
 			end
 		end
 	end
@@ -1548,11 +1548,11 @@ addCommandHandler("apark", setVehiclePosition2, false, false)
 
 function setVehiclePosition3(veh)
 	if call( getResourceFromName("tow-system"), "cannotVehpos", source ) then
-		outputChatBox("Only Los Santos Towing & Recovery is allowed to park their vehicles on the Impound Lot.", source, 255, 0, 0)
+		outputChatBox("Somente o Los Santos Towing & Recovery pode estacionar seus veículos no lote de retenção.", source, 255, 0, 0)
 	elseif isElementWithinColShape( source, HospitalCol ) and getElementData( source, "faction" ) ~= 2 and not exports.integration:isPlayerTrialAdmin(source) then
-		outputChatBox("Only Los Santos Emergency Service is allowed to park their vehicles in front of the Hospital.", source, 255, 0, 0)
+		outputChatBox("Somente o Serviço de Emergência Los Santos tem permissão para estacionar seus veículos em frente ao hospital.", source, 255, 0, 0)
 	elseif isElementWithinColShape( source, PershingSquareCol ) and getElementData( source, "faction" ) ~= 1  and not exports.integration:isPlayerTrialAdmin(source) then
-		outputChatBox("Only Los Santos Police Department is allowed to park their vehicles on Pershing Square.", source, 255, 0, 0)
+		outputChatBox("Apenas o Departamento de Polícia de Los Santos tem permissão para estacionar seus veículos na Praça Pershing.", source, 255, 0, 0)
 	else
 		local playerid = getElementData(source, "dbid")
 		local owner = getElementData(veh, "owner")
@@ -1561,7 +1561,7 @@ function setVehiclePosition3(veh)
 		local TowingReturn = call(getResourceFromName("tow-system"), "CanTowTruckDriverVehPos", source) -- 2 == in towing and in col shape, 1 == colshape only, 0 == not in col shape
 		if (owner==playerid and TowingReturn == 0) or (exports.global:hasItem(source, 3, dbid)) or (TowingReturn == 2) or (exports.integration:isPlayerTrialAdmin(source) and exports.logs:logMessage("[AVEHPOS] " .. getPlayerName( source ) .. " parked car #" .. dbid .. " at " .. x .. ", " .. y .. ", " .. z, 9)) then
 			if (dbid<0) then
-				outputChatBox("This vehicle is not permanently spawned.", source, 255, 0, 0)
+				outputChatBox("Este veículo não é gerado permanentemente.", source, 255, 0, 0)
 			else
 				if (call(getResourceFromName("tow-system"), "CanTowTruckDriverGetPaid", source)) then
 					-- pd has to pay for this impound
@@ -1579,7 +1579,7 @@ function setVehiclePosition3(veh)
 				exports.anticheat:changeProtectedElementDataEx(veh, "respawnposition", {x, y, z, rx, ry, rz}, false)
 				exports.anticheat:changeProtectedElementDataEx(veh, "interior", interior)
 				exports.anticheat:changeProtectedElementDataEx(veh, "dimension", dimension)
-				outputChatBox("Vehicle spawn position set.", source)
+				outputChatBox("Conjunto de posição de criação de veículo.", source)
 				exports.logs:dbLog(thePlayer, 4, {  veh }, "PARK")
 				for key, value in ipairs(destroyTimers) do
 					if (tonumber(destroyTimers[key][2]) == dbid) then
@@ -1595,12 +1595,12 @@ function setVehiclePosition3(veh)
 				if ( getElementData(veh, "Impounded") or 0 ) > 0 then
 					local owner = getPlayerFromName( exports['cache']:getCharacterName( getElementData( veh, "owner" ) ) )
 					if isElement( owner ) and exports.global:hasItem( owner, 2 ) then
-						outputChatBox("((SFT&R)) #5555 [SMS]: Your " .. getVehicleName(veh) .. " has been impounded. Head over to the impound to release it.", owner, 120, 255, 80)
+						outputChatBox("((SFT&R)) #5555 [SMS]: Seu " .. getVehicleName(veh) .. " foi apreendido. Vá até o confisco para liberá-lo.", owner, 120, 255, 80)
 					end
 				end
 			end
 		else
-			outputChatBox( "You can't park this vehicle.", source, 255, 0, 0 )
+			outputChatBox( "Você não pode estacionar este veículo.", source, 255, 0, 0 )
 		end
 	end
 end
@@ -1610,7 +1610,7 @@ addEventHandler( "parkVehicle", getRootElement( ), setVehiclePosition3 )
 function setVehiclePosition4(thePlayer, commandName)
 	local veh = getPedOccupiedVehicle(thePlayer)
 	if not veh or getElementData(thePlayer, "realinvehicle") == 0 then
-		outputChatBox("You are not in a vehicle.", thePlayer, 255, 0, 0)
+		outputChatBox("Você não está em um veículo.", thePlayer, 255, 0, 0)
 	else
 		local playerid = getElementData(thePlayer, "dbid")
 		local playerfl = getElementData(thePlayer, "factionleader")
@@ -1632,13 +1632,13 @@ function setVehiclePosition4(thePlayer, commandName)
 			exports.anticheat:changeProtectedElementDataEx(veh, "respawnposition", {x, y, z, rx, ry, rz}, false)
 			exports.anticheat:changeProtectedElementDataEx(veh, "interior", interior)
 			exports.anticheat:changeProtectedElementDataEx(veh, "dimension", dimension)
-			outputChatBox("Vehicle spawn position for #" .. dbid .. " set.", thePlayer)
+			outputChatBox("Posição de criação do veículo para #" .. dbid .. " conjunto.", thePlayer)
 			exports.logs:dbLog(thePlayer, 4, {  veh }, "PARK")
 
 			local adminID = getElementData(thePlayer, "account:id")
 			local addLog = mysql:query_free("INSERT INTO `vehicle_logs` (`vehID`, `action`, `actor`) VALUES ('"..tostring(dbid).."', '"..commandName.."', '"..adminID.."')") or false
 			if not addLog then
-				outputDebugString("Failed to add vehicle logs.")
+				outputDebugString("Falha ao adicionar registros do veículo.")
 			end
 
 			for key, value in ipairs(destroyTimers) do
@@ -1655,7 +1655,7 @@ function setVehiclePosition4(thePlayer, commandName)
 			if ( getElementData(veh, "Impounded") or 0 ) > 0 then
 				local owner = getPlayerFromName( exports['cache']:getCharacterName( getElementData( veh, "owner" ) ) )
 				if isElement( owner ) and exports.global:hasItem( owner, 2 ) then
-					outputChatBox("((SFT&R)) #5555 [SMS]: Your " .. getVehicleName(veh) .. " has been impounded. Head over to the impound to release it.", owner, 120, 255, 80)
+					outputChatBox("((SFT&R)) #5555 [SMS]: Seu " .. getVehicleName(veh) .. " foi apreendido. Vá até o confisco para liberá-lo. /fpark ", owner, 120, 255, 80)
 				end
 			end
 		end
@@ -1710,9 +1710,9 @@ function detachVehicle(thePlayer)
 		local veh = getPedOccupiedVehicle(thePlayer)
 		if getVehicleTowedByVehicle(veh) then
 			detachTrailerFromVehicle(veh)
-			outputChatBox("The trailer was detached.", thePlayer, 0, 255, 0)
+			outputChatBox("O trailer foi destacado.", thePlayer, 0, 255, 0)
 		else
-			outputChatBox("There is no trailer...", thePlayer, 255, 0, 0)
+			outputChatBox("Não há trailer...", thePlayer, 255, 0, 0)
 		end
 	end
 end

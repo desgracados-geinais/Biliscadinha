@@ -35,7 +35,7 @@ function getPaperFromTony(button, state, absX, absY, wx, wy, wz, element)
                 	triggerServerEvent("givePaperToSellVehicle", getResourceRootElement(), localPlayer)
 					showCursor(false)
 				else
-					outputChatBox("You do not have 100$.")
+					outputChatBox("Você não tem 100$.")
 					showCursor(false)
                 end
             end, false)
@@ -66,13 +66,13 @@ function cBeginGUI()
 	local y = scrHeight/2 - (height2/2)
 
 	--Buttons
-	plates = guiCreateButton(0.1, 0.1, 0.75, 0.2, "License Plates", true, greetingWindow)
+	plates = guiCreateButton(0.1, 0.1, 0.75, 0.2, "Matrículas", true, greetingWindow)
 	addEventHandler("onClientGUIClick", plates, fetchPlateList)
 
-	register = guiCreateButton(0.1, 0.4, 0.75, 0.2, "Registration", true, greetingWindow)
+	register = guiCreateButton(0.1, 0.4, 0.75, 0.2, "Cadastro", true, greetingWindow)
 	addEventHandler("onClientGUIClick", register, fetchRegisterList)
 
-	neither = guiCreateButton(0.1, 0.7, 0.75, 0.2, "Neither", true, greetingWindow)
+	neither = guiCreateButton(0.1, 0.7, 0.75, 0.2, "Nem", true, greetingWindow)
 	addEventHandler("onClientGUIClick", neither, closeWindow)
 
 	--Quick Settings
@@ -110,9 +110,9 @@ function PlateWindow(vehicleList)
 	local x = scrWidth/2 - (width/2)
 	local y = scrHeight/2 - (height/2)
 
-	mainVehWindow = guiCreateWindow(x, y, width, height, "Vehicle License Plate: Registration", false)
+	mainVehWindow = guiCreateWindow(x, y, width, height, "Matrícula do veículo: registro", false)
 
-	guiCreateLabel(0.03, 0.08, 2.0, 0.1, "Which vehicle would you like to register plates for?", true, mainVehWindow)
+	guiCreateLabel(0.03, 0.08, 2.0, 0.1, "Para qual veículo você gostaria de registrar as placas?", true, mainVehWindow)
 	vehlist = guiCreateGridList(0.03, 0.15, 1, 0.73, true, mainVehWindow)
 
 	ovid = guiGridListAddColumn(vehlist, "ID", 0.1)
@@ -155,9 +155,9 @@ function registerWindow(vehicleList)
 	local x = scrWidth/2 - (width/2)
 	local y = scrHeight/2 - (height/2)
 
-	mainVehWindow = guiCreateWindow(x, y, width, height, "Vehicle Registration", false)
+	mainVehWindow = guiCreateWindow(x, y, width, height, "Registro de Veículo", false)
 
-	guiCreateLabel(0.03, 0.08, 2.0, 0.1, "Which vehicle would you like to register/unregister?", true, mainVehWindow)
+	guiCreateLabel(0.03, 0.08, 2.0, 0.1, "Qual veículo você gostaria de registrar/cancelar o registro?", true, mainVehWindow)
 	vehlist = guiCreateGridList(0.03, 0.15, 1, 0.73, true, mainVehWindow)
 
 	ovid = guiGridListAddColumn(vehlist, "ID", 0.1)
@@ -181,7 +181,7 @@ function registerWindow(vehicleList)
 	end
 
 	--Buttons
-	close = guiCreateButton(0.50, 0.90, 0.50, 0.10, "Exit Screen", true, mainVehWindow)
+	close = guiCreateButton(0.50, 0.90, 0.50, 0.10, "Sair da tela", true, mainVehWindow)
 	addEventHandler("onClientGUIClick", close, closeWindow)
 
 	--OnDoubleClick
@@ -215,7 +215,7 @@ function editPlateWindow()
 		local y = scrHeight/2 - (height/2)
 
 		efinalWindow = guiCreateStaticImage(x, y, width, height, ":resources/window_body.png", false)
-		local mainT = guiCreateLabel(0.03, 0.08, 0.96, 0.2, "Registering plates for vehicle VIN: " .. svnum .. ".\nPlease enter your new plate:", true, efinalWindow)
+		local mainT = guiCreateLabel(0.03, 0.08, 0.96, 0.2, "Registro de placas para veículo VIN: " .. svnum .. ".\nPor favor, digite sua nova placa:", true, efinalWindow)
 		guiLabelSetHorizontalAlign(mainT, "center", true)
 
 		newplates = guiCreateEdit(0.1, 0.3, 0.8, 0.15, "", true, efinalWindow)
@@ -223,12 +223,12 @@ function editPlateWindow()
 
 		addEventHandler("onClientGUIChanged", newplates, checkPlateBox)
 
-		plateCheck = guiCreateLabel(0, 0.5, 1, 0.1, "Please pick a plate you like.", true, efinalWindow)
+		plateCheck = guiCreateLabel(0, 0.5, 1, 0.1, "Por favor, escolha uma placa que você gosta.", true, efinalWindow)
 		guiLabelSetHorizontalAlign(plateCheck, "center", true)
 
 		--Buttons
 
-		submitNP = guiCreateButton(0.1, 0.60, 0.8, 0.15, "Purchase (Cost: 2 GCs)", true, efinalWindow)
+		submitNP = guiCreateButton(0.1, 0.60, 0.8, 0.15, "Compra (Custa: 2 GCs)", true, efinalWindow)
 		addEventHandler("onClientGUIClick", submitNP, function ()
 			if source == submitNP then
 				local data = guiGetText(newplates)
@@ -242,7 +242,7 @@ function editPlateWindow()
 		end)
 		guiSetEnabled(submitNP, false)
 
-		finalx = guiCreateButton(0.1, 0.80, 0.8, 0.15, "Exit Screen", true, efinalWindow)
+		finalx = guiCreateButton(0.1, 0.80, 0.8, 0.15, "Sair da tela", true, efinalWindow)
 		addEventHandler("onClientGUIClick", finalx, closeWindow)
 
 		--Quick Settings
@@ -259,11 +259,11 @@ function checkPlateBox()
 	local theText = string.upper(guiGetText(source))
 		guiSetText(source,theText)
 	if checkPlate(theText) then
-		guiSetText(plateCheck, "'"..theText.."' is a valid plate!")
+		guiSetText(plateCheck, "'"..theText.."' é uma placa válida!")
 		guiLabelSetColor(plateCheck, 0, 255, 0)
 		guiSetEnabled(submitNP, true)
 	else
-		guiSetText(plateCheck, "'"..theText.."' is not valid.")
+		guiSetText(plateCheck, "'"..theText.."' não é válido.")
 		guiLabelSetColor(plateCheck, 255, 0, 0)
 		guiSetEnabled(submitNP, false)
 	end
@@ -308,7 +308,7 @@ function updateRegistration()
 			guiSetEnabled(submitNP2, false)
 		end
 
-		finalx = guiCreateButton(0.1, 0.80, 0.8, 0.15, "Exit Screen", true, efinalWindow)
+		finalx = guiCreateButton(0.1, 0.80, 0.8, 0.15, "Sair da tela", true, efinalWindow)
 		addEventHandler("onClientGUIClick", finalx, closeWindow)
 
 		--Quick Settings

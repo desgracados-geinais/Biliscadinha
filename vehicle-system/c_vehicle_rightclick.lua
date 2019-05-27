@@ -11,9 +11,9 @@ function requestInventory(button)
 	if button=="left" and not getElementData(localPlayer, "exclusiveGUI") then
 		if isVehicleLocked(vehicle) and vehicle ~= getPedOccupiedVehicle(localPlayer) then
 			triggerServerEvent("onVehicleRemoteAlarm", vehicle)
-			outputChatBox("This vehicle is locked.", 255, 0, 0)
+			outputChatBox("Este veículo está trancado.", 255, 0, 0)
 		elseif type(getElementData(vehicle, "Impounded")) == "number" and isVehicleImpounded(vehicle) and not exports.global:hasItem(localPlayer, 3, getElementData(vehicle, "dbid")) then
-			outputChatBox("You need the keys to search this vehicle.", 255, 0, 0)
+			outputChatBox("Você precisa das chaves para procurar este veículo.", 255, 0, 0)
 		else
 			triggerServerEvent( "openFreakinInventory", localPlayer, vehicle, ax, ay )
 		end
@@ -74,12 +74,12 @@ function showVehicleMenu()
 
 	if (isVehicleImpounded(vehicle)) then
 		local days = getRealTime().yearday-getElementData(vehicle, "Impounded")
-		row.impounded = rightclick:addRow("Impounded: "..days.." days", false, true)
+		row.impounded = rightclick:addRow("Preso: "..days.." dias", false, true)
 	end
 	
 	if (hasVehicleWindows(vehicle)) then
 		local windowState = isVehicleWindowUp(vehicle, true) and "Up" or "Down"
-		row.window = rightclick:addRow("Window: "..windowState, false, true)
+		row.window = rightclick:addRow("Janela: "..windowState, false, true)
 	end
 	
 	--y = y + lineH
@@ -260,7 +260,7 @@ function fillFuelTank(button, state)
 		if value > 0 then
 			triggerServerEvent("fillFuelTankVehicle", localPlayer, vehicle, value)
 		else
-			outputChatBox("This fuel can is empty...", 255, 0, 0)
+			outputChatBox("Esta lata de combustível está vazia...", 255, 0, 0)
 		end
 	end
 end

@@ -107,182 +107,181 @@ GUIEditor = {
 }
 function snowInfoGUI()
 	if isElement(GUIEditor.window[1]) then destroyElement(GUIEditor.window[1]) end
-	GUIEditor.window[1] = guiCreateWindow(576, 198, 464, 522, "Snow Roleplay Information", false)
+	GUIEditor.window[1] = guiCreateWindow(576, 198, 464, 522, "Informações sobre o jogo de neve", false)
 	guiWindowSetSizable(GUIEditor.window[1], false)
 
-	GUIEditor.button[1] = guiCreateButton(11, 487, 436, 25, "Close", false, GUIEditor.window[1])
+	GUIEditor.button[1] = guiCreateButton(11, 487, 436, 25, "Fechar", false, GUIEditor.window[1])
 	addEventHandler("onClientGUIClick", GUIEditor.button[1], function ()
 			if isElement(GUIEditor.window[1]) then destroyElement(GUIEditor.window[1]) end
 		end, false)
 	GUIEditor.tabpanel[1] = guiCreateTabPanel(9, 23, 439, 459, false, GUIEditor.window[1])
 
-	GUIEditor.tab[1] = guiCreateTab("Home", GUIEditor.tabpanel[1])
+	GUIEditor.tab[1] = guiCreateTab("Inicio", GUIEditor.tabpanel[1])
 
-	GUIEditor.memo[1] = guiCreateMemo(5, 7, 427, 424, [[ Hello,
+	GUIEditor.memo[1] = guiCreateMemo(5, 7, 427, 424, [[ Olá,
 
-	December is upon us, with winter just 2 weeks away and snowfall picking up around the globe. Our fictional roleplay zone, San Andreas is now beginning to experience snowfall and temperature of all ranges. This is indeed a server-wide event, whether or not you'd like to take part of it visually, you will be expected to follow the rules.
+Dezembro está chegando, com o inverno a apenas duas semanas e a neve caindo ao redor do globo. Nossa zona de roleplay ficcional, San Andreas está agora começando a experimentar a queda de neve e temperatura de todas as faixas. Este é realmente um evento de todo o servidor, se você quiser ou não participar visualmente, espera-se que você siga as regras.
 
 	Reminder:
-	/snow to toggle snowfall.
-	/groundsnow to toggle the ground snow shaders.
-	/snowsettings to customize snowfall.
+	/snow para alternar a queda de neve.
+	/groundsnow para alternar os shaders de neve do solo.
+	/snowsettings para personalizar a queda de neve.
 
-	*Note violation of these rules may result in administrative punishment for powergaming.
-	*Note snowplows and snowmobiles may operate as if they have snow tires installed.
-	*Note snowmobiles are not motorcycles in the instance of usage restrictions. ]], false, GUIEditor.tab[1])
+	* Nota violação destas regras pode resultar em punição administrativa para powergaming.
+	* Observe que as snowplows e snowmobiles podem operar como se tivessem pneus de neve instalados.
+	* Observe que os snowmobiles não são motocicletas no caso de restrições de uso. ]], false, GUIEditor.tab[1])
 	guiMemoSetReadOnly(GUIEditor.memo[1], true)
 
 	GUIEditor.tab[2] = guiCreateTab("Level 0", GUIEditor.tabpanel[1])
 
-	GUIEditor.memo[2] = guiCreateMemo(5, 7, 427, 424, [[ Frost, subzero temperatures (Level 0)
+	GUIEditor.memo[2] = guiCreateMemo(5, 7, 427, 424, [[ Geada, temperaturas abaixo de zero (Level 0)
 
-	Temperature: Ranging from -5?C to 0?C | Ranging from 23?F to 32?F
+	Temperatura: Variando de -5?C para 0?C | Variando de 23?F para 32?F
 
-	Weather Notice: Snow tires advised
+	Aviso meteorológico: Pneus de neve aconselhados
 
-	Snow settings: 0 (just /snow, don't bother editing to 0)
+	Configurações de neve: 0 (somente /snow, não se incomode, edição para 0)
 
-	RULES
-	Vehicle:
-	Max speed on pavement: 120 km/h, 135 km/h with snow tires
-	Max speed off road: 50 km/h, 60 km/h with snow tires.
-	Show fear of ice
-	Prefer usage of roads recently paved. (If paving service is advertised)
-	Visibility range: Regular, controlled by fog density if any.
+	REGRAS
+	Veículo:
+	Velocidade máxima no pavimento: 120 km/h, 135 km/h com pneus de neve
+	Velocidade máxima fora da estrada: 50 km/h, 60 km/h com pneus de neve.
+	Mostrar medo de gelo
+	Preferir o uso de estradas recentemente pavimentadas. (Se o serviço de pavimentação for anunciado)
+	Intervalo de visibilidade: Regular, controlado pela densidade de névoa, se houver.
 
-	Person:
-	Winter ware
-	Snow play, otherwise avoid loitering in the cold for no reason.\
-	Visibility range: Regular, controlled by fog density if any. ]], false, GUIEditor.tab[2])
+	Pessoa:
+	Desgaste do inverno jogo de neve, caso contrário, evitar vadiagem no frio por nenhuma razão.\
+	Intervalo de visibilidade: Regular, controlado pela densidade de névoa, se houver. ]], false, GUIEditor.tab[2])
 	guiMemoSetReadOnly(GUIEditor.memo[2], true)
 
 	GUIEditor.tab[3] = guiCreateTab("Level 1", GUIEditor.tabpanel[1])
 
-	GUIEditor.memo[3] = guiCreateMemo(5, 7, 427, 424, [[ Snow Flurry (Level 1)
+	GUIEditor.memo[3] = guiCreateMemo(5, 7, 427, 424, [[ Rajada de neve (Level 1)
 
-	Temperature: Ranging from -12?C to -6?C | Ranging from 10?F to 21?F
+	Temperatura: Variando de -12?C para -6?C | Variando de 10?F para 21?F
 
-	​Weather Notice: Snow tires advised
+	Aviso meteorológico: Pneus de neve aconselhados
 
-	Snow settings:
-	Density; 1000
-	Snowflake size: 1-3
-	Snow Wind Speed: 7
-	Snow Fall Speed: 1-3
+	Configurações de neve:
+	Densidade; 1000
+	Tamanho do floco de neve: 1-3
+	Velocidade do vento de neve: 7
+	Velocidade de queda de neve: 1-3
 
-	RULES
-	Vehicle:
-	Max speed on pavement: 80 km/h, 90 km/h with snow tires
-	Max speed off road: 20 km/h, 30 km/h with snow tires.
-	Show fear of ice
-	Prefer usage of roads recently paved. (If paving service is advertised)
-	Motorcycles used less.
-	Visibility range: 80 feet (70 for motorcycles)
+	REGRAS
+	Veículo:
+	Velocidade máxima no pavimento: 80 km/h, 90 km/h com pneus de neve
+	Velocidade máxima fora da estrada: 20 km/h, 30 km/h com pneus de neve.
+	Mostrar medo de gelo
+	Prefere o uso de estradas recentemente pavimentadas. (Se o serviço de pavimentação for anunciado)
+	Motocicletas usadas menos.
+	Alcance de visibilidade: 80 pés (70 para motos)
 
-	Person:
-	Winter ware
-	Snow play, otherwise avoid loitering in the cold for no reason.
-	Visibility range: 65 feet ]], false, GUIEditor.tab[3])
+	Pessoa:
+	Roupa de inverno
+	Jogar neve, caso contrário, evite vadiagem no frio sem motivo.
+	Alcance de visibilidade: 65 pés ]], false, GUIEditor.tab[3])
 	guiMemoSetReadOnly(GUIEditor.memo[3], true)
 
 	GUIEditor.tab[4] = guiCreateTab("Level 2", GUIEditor.tabpanel[1])
 
-	GUIEditor.memo[4] = guiCreateMemo(5, 7, 427, 424, [[ Snow Storm (Level 2)
+	GUIEditor.memo[4] = guiCreateMemo(5, 7, 427, 424, [[ Tempestade de neve (Level 2)
 
-	Temperature: Ranging from -18?C to -9?C | Ranging from -0.4?F to 16?F
+	Temperatura: Variando de -18 ° C a -9 ° C | Variando de -0.4? F a 16? F
 
-	​Weather Notice: Snow tires advised
-	Weather Notice: Frostbite warning
-	Weather Notice: Aircrafts Grounded (IC)
+	Aviso meteorológico: Pneus de neve aconselhados
+	Aviso meteorológico: aviso de congelamento
+	Ameteorológico: Aeronave aterrada (IC)
 
-	Snow settings:
-	Density; 3500
-	Snowflake size: 2-4
-	Snow Wind Speed: 40
-	Snow Fall Speed: 5-9
+	Configurações de neve:
+	Densidade; 3500
+	Tamanho do floco de neve: 2-4
+	Velocidade do Vento de Neve: 40
+	Velocidade de Queda de Neve: 5-9
 
-	RULES
-	Vehicle:
-	Max speed on pavement: 50 km/h, 65 km/h with snow tires
-	Max speed off road: 15 km/h, 20 km/h with snow tires
-	Show fear of ice
-	Prefer usage of roads recently paved. (If paving service is advertised)
-	Motorcycles used less
-	Visibility range: 50 feet (30 for motorcycles)
+	REGRAS
+	Veículo:
+	Velocidade máxima no pavimento: 50 km/ h, 65 km/h com pneus de neve
+	Máxima velocidade fora de estrada: 15 km/h, 20 km/h com pneus de neve
+	Mostrar medo de gelo
+	Prefere o uso de estradas recentemente pavimentadas. (Se o serviço de pavimentação for anunciado)
+	Motocicletas usadas menos
+	Alcance de visibilidade: 50 pés (30 para motocicletas)
 
-	Person:
-	Winter ware mandatory
-	Snow play, otherwise avoid loitering in the cold for no reason.
-	Visibility range: 30 feet
+	Pessoa:
+	Artigos de inverno obrigatórios
+	Jogar neve, caso contrário, evite vadiagem no frio sem motivo.
+	Alcance de visibilidade: 30 pés
 	 ]], false, GUIEditor.tab[4])
 	guiMemoSetReadOnly(GUIEditor.memo[4], true)
 
 	GUIEditor.tab[5] = guiCreateTab("Level 3", GUIEditor.tabpanel[1])
 
-	GUIEditor.memo[5] = guiCreateMemo(5, 7, 427, 424, [[ Blizzard (Level 3)
+	GUIEditor.memo[5] = guiCreateMemo(5, 7, 427, 424, [[ Nevasca (Level 3)
 
-	Temperature: Ranging from -22?C to -9?C | Ranging from -7.6?F to 16?F
+	Temperatura: Variando de -22 ° C a -9 ° C | Variando de -7,6? F a 16? F
 
-	​Weather Notice: Snow tires advised
-	Weather Notice: Severe Frostbite warning
-	Weather Notice: Aircrafts Grounded (IC)
+	Aviso meteorológico: Pneus de neve aconselhados
+	Aviso meteorológico: aviso de congelamento severo
+	Aviso meteorológico: Aeronave aterrada (IC)
 
-	Snow settings:
-	Density; 5000
-	Snowflake size: 2-4
-	Snow Wind Speed: 80
-	Snow Fall Speed: 7-12
+	Configurações de neve:
+	Densidade; 5000
+	Tamanho do floco de neve: 2-4
+	Velocidade do Vento de Neve: 80
+	Velocidade de Queda de Neve: 7-12
 
-	RULES
-	Vehicle:
-	Max speed on pavement: 35 km/h, 45 km/h with snow tires
-	Max speed off road: 10 km/h
-	Show fear of ice
-	Prefer usage of roads recently paved. (If paving service is advertised)
-	Motorcycles unused.
-	Aircrafts Grounded (OOC)
-	Visibility range: 25 feet
+	REGRAS
+	Veículo:
+	Velocidade máxima no pavimento: 35 km / h, 45 km / h com pneus de neve
+	Máxima velocidade fora de estrada: 10 km / h
+	Mostrar medo de gelo
+	Prefere o uso de estradas recentemente pavimentadas. (Se o serviço de pavimentação for anunciado)
+	Motocicletas não utilizadas.
+	Aeronave Aterrada (OOC)
+	Alcance de visibilidade: 25 pés
 
-	Person:
-	Winter ware mandatory
-	Snow play, otherwise avoid loitering in the cold for no reason.
-	Dense snow, sprint impossible - jogging very tiresome.
-	Sharp snow blowing against exposed skin.
-	Visibility range: 15 feet ]], false, GUIEditor.tab[5])
+	Pessoa:
+	Artigos de inverno obrigatórios
+	Jogar neve, caso contrário, evite vadiagem no frio sem motivo.
+	Neve densa, corrida impossível - correr muito cansativo.
+	Afiada neve soprando contra a pele exposta.
+	Alcance de visibilidade: 15 pés ]], false, GUIEditor.tab[5])
 	guiMemoSetReadOnly(GUIEditor.memo[5], true)
 
 	GUIEditor.tab[6] = guiCreateTab("Level 4", GUIEditor.tabpanel[1])
 
-	GUIEditor.memo[6] = guiCreateMemo(5, 7, 427, 424, [[ Whiteout (Level 4)
+	GUIEditor.memo[6] = guiCreateMemo(5, 7, 427, 424, [[ Tudo BRANCO (Level 4)
 
-	Temperature: Ranging from -22?C to -9?C | Ranging from -7.6?F to 16?F
+	Temperatura: Variando de -22 ° C a -9 ° C | Variando de -7,6? F a 16? F
 
-	​Weather Notice: Snow tires advised
-	Weather Notice: Severe Frostbite warning
-	Weather Notice: Aircrafts Grounded (IC)
+	Aviso meteorológico: Pneus de neve aconselhados
+	Aviso meteorológico: aviso de congelamento severo
+	Aviso meteorológico: Aeronave aterrada (IC)
 
-	Snow settings:
-	Density; 7000
-	Snowflake size: 3-5
-	Snow Wind Speed: 100
-	Snow Fall Speed: 10-15
+	Configurações de neve:
+	Densidade; 7000
+	Tamanho do floco de neve: 3-5
+	Velocidade do Vento de Neve: 100
+	Velocidade de Queda de Neve: 10-15
 
-	RULES
-	Vehicle:
-	Max speed on pavement: 20 km/h, 30 km/h with snow tires
-	Max speed off pavement: Off limits
-	Show fear of ice
-	Prefer usage of roads recently paved. (If paving service is advertised)
-	Motorcycles unused.
-	Aircrafts Grounded (OOC)
-	Visibility range: 10 feet
+	REGRAS
+	Veículo:
+	Velocidade máxima no pavimento: 20 km / h, 30 km / h com pneus de neve
+	Máxima velocidade de pavimentação: fora dos limites
+	Mostrar medo de gelo
+	Prefere o uso de estradas recentemente pavimentadas. (Se o serviço de pavimentação for anunciado)
+	Motocicletas não utilizadas.
+	Aeronave Aterrada (OOC)
+	Alcance de visibilidade: 10 pés
 
-	Person:
-	Winter ware mandatory
-	Snow play, otherwise avoid loitering in the cold for no reason.
-	Dense snow, sprint impossible - jogging very tiresome.
-	Sharp snow blowing against exposed skin.
-	Visibility range: 5 feet ]], false, GUIEditor.tab[6])
+	Pessoa:
+	Artigos de inverno obrigatórios
+	Jogar neve, caso contrário, evite vadiagem no frio sem motivo.
+	Neve densa, corrida impossível - correr muito cansativo.
+	Afiada neve soprando contra a pele exposta.
+	Alcance de visibilidade: 1,5 m ]], false, GUIEditor.tab[6])
 	guiMemoSetReadOnly(GUIEditor.memo[6], true)
 end
 --addCommandHandler("snowinfo", snowInfoGUI, false, false)

@@ -15,7 +15,7 @@ function isActive(veh)
 		if owner_last_login and tonumber(owner_last_login) then
 			local owner_last_login_text, owner_last_login_sec = exports.datetime:formatTimeInterval(owner_last_login)
 			if owner_last_login_sec > oneDay*30 then
-				return false, "Inactive Vehicle | Owner is inactive ("..owner_last_login_text..")", owner_last_login_sec
+				return false, "Veículo Inativo | O proprietário está inativo ("..owner_last_login_text..")", owner_last_login_sec
 			end
 		end
 
@@ -26,7 +26,7 @@ function isActive(veh)
 			if lastused and tonumber(lastused) then
 				local lastusedText, lastusedSeconds = exports.datetime:formatTimeInterval(lastused)
 				if lastusedSeconds > oneDay*14 then
-					return false, "Inactive Vehicle | Last used "..lastusedText.." while parking outdoor", lastusedSeconds
+					return false, "Veículo Inativo | Usado por último "..lastusedText.." enquanto estacionamento ao ar livre", lastusedSeconds
 				end
 			end
 		end
