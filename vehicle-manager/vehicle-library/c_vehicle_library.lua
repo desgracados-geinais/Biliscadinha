@@ -38,19 +38,19 @@ function showLibrary(vehs, thePed)
 	--guiGridListSetSelectionMode(grid,2)
 	
 	col.id = guiGridListAddColumn(grid,"ID",0.06)
-	col.enabled = guiGridListAddColumn(grid,"Enabled",0.06)
-	col.mtamodel = guiGridListAddColumn(grid,"MTA Model",0.15)
-	col.brand = guiGridListAddColumn(grid,"Brand",0.15)
-	col.model = guiGridListAddColumn(grid,"Model",0.15)
-	col.year = guiGridListAddColumn(grid,"Year",0.1)
-	col.price = guiGridListAddColumn(grid,"Price",0.1)
-	col.tax = guiGridListAddColumn(grid,"Tax",0.1)
-	col.updatedby = guiGridListAddColumn(grid,"Updated By",0.15)
-	col.updatedate = guiGridListAddColumn(grid,"Update Date",0.2)
-	col.createdby = guiGridListAddColumn(grid,"Created By",0.15)
-	col.createdate = guiGridListAddColumn(grid,"Create Date",0.2)
-	col.notes = guiGridListAddColumn(grid,"Notes",0.5)
-	col.spawnto = guiGridListAddColumn(grid,"Spawn to",0.2)
+	col.enabled = guiGridListAddColumn(grid,"Ativado",0.06)
+	col.mtamodel = guiGridListAddColumn(grid,"MTA Modelo",0.15)
+	col.brand = guiGridListAddColumn(grid,"Marca",0.15)
+	col.model = guiGridListAddColumn(grid,"Modelo",0.15)
+	col.year = guiGridListAddColumn(grid,"Ano",0.1)
+	col.price = guiGridListAddColumn(grid,"Preço",0.1)
+	col.tax = guiGridListAddColumn(grid,"Taxa",0.1)
+	col.updatedby = guiGridListAddColumn(grid,"Atualizado por",0.15)
+	col.updatedate = guiGridListAddColumn(grid,"Atualizado Data",0.2)
+	col.createdby = guiGridListAddColumn(grid,"Criado por",0.15)
+	col.createdate = guiGridListAddColumn(grid,"Criado Data",0.2)
+	col.notes = guiGridListAddColumn(grid,"Notas",0.5)
+	col.spawnto = guiGridListAddColumn(grid,"Spawn para",0.2)
 	
 	carshops = exports["carshop-system"]:getCarShops()
 	
@@ -78,7 +78,7 @@ function showLibrary(vehs, thePed)
 	if thePed and isElement(thePed) and getElementData(thePed, "carshop") then
 		local drivetestPrice = 25
 		local orderPrice = 0
-		GUIEditor_Button["testdrive"] = guiCreateButton(0.0115,0.9181,0.1237,0.0587,"Test Drive ($"..drivetestPrice..")",true,GUIEditor_Window[1])
+		GUIEditor_Button["testdrive"] = guiCreateButton(0.0115,0.9181,0.1237,0.0587,"Test drive ($"..drivetestPrice..")",true,GUIEditor_Window[1])
 		guiSetFont(GUIEditor_Button["testdrive"],"default-bold-small")
 		--guiSetEnabled(GUIEditor_Button["testdrive"], false)
 		addEventHandler( "onClientGUIClick", GUIEditor_Button["testdrive"],
@@ -93,16 +93,16 @@ function showLibrary(vehs, thePed)
 						closeLibrary()
 						playSuccess() 
 					else
-						guiSetText(GUIEditor_Window[1], "You need to select a vehicle from the list above first.")
+						guiSetText(GUIEditor_Window[1], "Você precisa selecionar um veículo da lista acima primeiro.")
 						playError()
-						triggerServerEvent("shop:storeKeeperSay", localPlayer, localPlayer, "Which one do you want to test?" , getElementData(thePed, "name"))
+						triggerServerEvent("shop:storeKeeperSay", localPlayer, localPlayer, "Qual você quer testar?" , getElementData(thePed, "name"))
 					end
 				end
 			end,
 		false)
 		--guiSetEnabled(GUIEditor_Button["testdrive"], false)
 		
-		GUIEditor_Button["ordervehicle"] = guiCreateButton(0.148,0.9181,0.1237,0.0587,"Order Vehicle",true,GUIEditor_Window[1])
+		GUIEditor_Button["ordervehicle"] = guiCreateButton(0.148,0.9181,0.1237,0.0587,"Encomendar Veículo",true,GUIEditor_Window[1])
 		guiSetFont(GUIEditor_Button["ordervehicle"],"default-bold-small")
 		--guiSetEnabled(GUIEditor_Button["testdrive"], false)
 		addEventHandler( "onClientGUIClick", GUIEditor_Button["ordervehicle"],
@@ -117,9 +117,9 @@ function showLibrary(vehs, thePed)
 						closeLibrary()
 						playSuccess() 
 					else
-						guiSetText(GUIEditor_Window[1], "You need to select a vehicle from the list above first.")
+						guiSetText(GUIEditor_Window[1], "Você precisa selecionar um veículo da lista acima primeiro.")
 						playError()
-						triggerServerEvent("shop:storeKeeperSay", localPlayer, localPlayer, "Which one do you want to order?" , getElementData(thePed, "name"))
+						triggerServerEvent("shop:storeKeeperSay", localPlayer, localPlayer, "Qual você quer pedir?" , getElementData(thePed, "name"))
 					end
 				end
 			end,
@@ -129,13 +129,13 @@ function showLibrary(vehs, thePed)
 		local playerOrderedFromShop = getElementData(localPlayer, "carshop:grotti:orderedvehicle:"..getElementData(thePed, "carshop"))
 		if playerOrderedFromShop then
 			guiSetEnabled(GUIEditor_Button["ordervehicle"], false)
-			GUIEditor_Button["cancelorder"] = guiCreateButton(0.148,0.9181,0.1237,0.0587,"Cancel Order",true,GUIEditor_Window[1])
+			GUIEditor_Button["cancelorder"] = guiCreateButton(0.148,0.9181,0.1237,0.0587,"Cancelar pedido",true,GUIEditor_Window[1])
 			guiSetFont(GUIEditor_Button["cancelorder"],"default-bold-small")
 			addEventHandler( "onClientGUIClick", GUIEditor_Button["cancelorder"],
 				function( button )
 					if button == "left" then
 						triggerServerEvent("vehicle-manager:handling:orderVehicle:cancel", localPlayer, getElementData(thePed, "carshop"))
-						triggerServerEvent("shop:storeKeeperSay", localPlayer, localPlayer, "Sure!" , getElementData(thePed, "name"))
+						triggerServerEvent("shop:storeKeeperSay", localPlayer, localPlayer, "Certo!" , getElementData(thePed, "name"))
 						closeLibrary()
 						playSuccess() 
 					end
@@ -144,7 +144,7 @@ function showLibrary(vehs, thePed)
 		end
 		
 	else
-		GUIEditor_Button[1] = guiCreateButton(0.0115,0.9181,0.1237,0.0587,"Create",true,GUIEditor_Window[1])
+		GUIEditor_Button[1] = guiCreateButton(0.0115,0.9181,0.1237,0.0587,"Criar",true,GUIEditor_Window[1])
 		guiSetFont(GUIEditor_Button[1],"default-bold-small")
 		addEventHandler( "onClientGUIClick", GUIEditor_Button[1], function()
 			if source == GUIEditor_Button[1] then
@@ -154,7 +154,7 @@ function showLibrary(vehs, thePed)
 		end)
 		guiSetEnabled(GUIEditor_Button[1], false)
 		
-		GUIEditor_Button[2] = guiCreateButton(0.148,0.9181,0.1237,0.0587,"View/Modify",true,GUIEditor_Window[1])
+		GUIEditor_Button[2] = guiCreateButton(0.148,0.9181,0.1237,0.0587,"Ver/Modificar",true,GUIEditor_Window[1])
 		guiSetFont(GUIEditor_Button[2],"default-bold-small")
 		addEventHandler( "onClientGUIClick", GUIEditor_Button[2],
 			function( button )
@@ -176,7 +176,7 @@ function showLibrary(vehs, thePed)
 						triggerServerEvent("vehlib:getCurrentVehicleRecord", localPlayer, tonumber(guiGridListGetItemText( grid , row, 1 )))
 						--addNewVehicle(veh)
 					else
-						guiSetText(GUIEditor_Window[1], "You need to select a record from the list above first.")
+						guiSetText(GUIEditor_Window[1], "Você precisa selecionar um registro da lista acima primeiro.")
 						playError()
 					end
 				end
@@ -200,14 +200,14 @@ function showLibrary(vehs, thePed)
 						end, 1000, 1)
 						closeLibrary()
 					else
-						guiSetText(GUIEditor_Window[1], "You need to select a record from the list above first.")
+						guiSetText(GUIEditor_Window[1], "Você precisa selecionar um registro da lista acima primeiro.")
 						playError()
 					end
 				end
 			end,
 		false)
 		
-		GUIEditor_Button[4] = guiCreateButton(0.4209,0.9181,0.1237,0.0587,"Delete",true,GUIEditor_Window[1])
+		GUIEditor_Button[4] = guiCreateButton(0.4209,0.9181,0.1237,0.0587,"Deletar",true,GUIEditor_Window[1])
 		guiSetFont(GUIEditor_Button[4],"default-bold-small")
 		addEventHandler( "onClientGUIClick", GUIEditor_Button[4],
 			function( button )
@@ -217,7 +217,7 @@ function showLibrary(vehs, thePed)
 					if row ~= -1 and col ~= -1 then
 						local createdby = guiGridListGetItemText( grid , row, 11 )
 						if createdby ~= getElementData(localPlayer, "account:username") and not exports.integration:isPlayerVehicleConsultant(localPlayer)  then
-							guiSetText(GUIEditor_Window[1], "You can only delete vehicles you added. Notify "..createdby.." if this vehicle isn't appropriate.")
+							guiSetText(GUIEditor_Window[1], "Você só pode excluir os veículos adicionados. Notificar "..createdby.." se este veículo não for apropriado.")
 							playError()
 						else
 							local id = guiGridListGetItemText( grid , row, 1 )
@@ -226,7 +226,7 @@ function showLibrary(vehs, thePed)
 							showConfirmDelete(id, brand, model, createdby)
 						end
 					else
-						guiSetText(GUIEditor_Window[1], "You need to select a record from the list above first.")
+						guiSetText(GUIEditor_Window[1], "Você precisa selecionar um registro da lista acima primeiro.")
 						playError()
 					end
 				end
@@ -234,7 +234,7 @@ function showLibrary(vehs, thePed)
 		false)
 		guiSetEnabled(GUIEditor_Button[4], false)
 		
-		GUIEditor_Button[5] = guiCreateButton(0.5574,0.9181,0.1237,0.0587,"Refresh",true,GUIEditor_Window[1])
+		GUIEditor_Button[5] = guiCreateButton(0.5574,0.9181,0.1237,0.0587,"Atualizar",true,GUIEditor_Window[1])
 		guiSetFont(GUIEditor_Button[5],"default-bold-small")
 		addEventHandler( "onClientGUIClick", GUIEditor_Button[5], function()
 			if source == GUIEditor_Button[5] then
@@ -243,7 +243,7 @@ function showLibrary(vehs, thePed)
 		end)
 		--guiSetEnabled(GUIEditor_Button[5], false)
 		
-		GUIEditor_Button[7] = guiCreateButton(0.6939,0.9181,0.1237,0.0587,"Restart Shops",true,GUIEditor_Window[1])
+		GUIEditor_Button[7] = guiCreateButton(0.6939,0.9181,0.1237,0.0587,"Atualizar Shops",true,GUIEditor_Window[1])
 		guiSetFont(GUIEditor_Button[7],"default-bold-small")
 		addEventHandler( "onClientGUIClick", GUIEditor_Button[7], function()
 			if source == GUIEditor_Button[7] then
@@ -265,7 +265,7 @@ function showLibrary(vehs, thePed)
 		end
 	end
 	
-	GUIEditor_Button[6] = guiCreateButton(0.8304,0.9181,0.1569,0.0587,"Close",true,GUIEditor_Window[1])
+	GUIEditor_Button[6] = guiCreateButton(0.8304,0.9181,0.1569,0.0587,"Fechar",true,GUIEditor_Window[1])
 	guiSetFont(GUIEditor_Button[6],"default-bold-small")
 	addEventHandler( "onClientGUIClick", GUIEditor_Button[6], function()
 		if source == GUIEditor_Button[6] then
@@ -310,29 +310,29 @@ function addNewVehicle(veh)
 	guiSetProperty(GUIEditor_Window[2],"AlwaysOnTop","true")
 	guiSetProperty(GUIEditor_Window[2],"SizingEnabled","false")
 	
-	GUIEditor_Label[1] = guiCreateLabel(0.0251,0.06,0.4292,0.0459,"MTA Vehicle Model (Name or ID):",true,GUIEditor_Window[2])
+	GUIEditor_Label[1] = guiCreateLabel(0.0251,0.06,0.4292,0.0459,"Modelo de veículo do MTA (nome ou ID):",true,GUIEditor_Window[2])
 	guiSetFont(GUIEditor_Label[1],"default-bold-small")
 	GUIEditor_Edit[1] = guiCreateEdit(0.0388,0.11,0.4155,0.06,(veh.mtaModel or ""),true,GUIEditor_Window[2])
 	if veh.update then
 		guiSetEnabled(GUIEditor_Edit[1], false)
 	end
-	GUIEditor_Label[2] = guiCreateLabel(0.0251,0.185,0.4292,0.0459,"Brand:",true,GUIEditor_Window[2])
+	GUIEditor_Label[2] = guiCreateLabel(0.0251,0.185,0.4292,0.0459,"Marca:",true,GUIEditor_Window[2])
 	guiSetFont(GUIEditor_Label[2],"default-bold-small")
 	GUIEditor_Edit[2] = guiCreateEdit(0.0388,0.235,0.4155,0.06,(veh.brand or ""),true,GUIEditor_Window[2])
-	GUIEditor_Label[3] = guiCreateLabel(0.0251,0.31,0.4292,0.0459,"Model:",true,GUIEditor_Window[2])
+	GUIEditor_Label[3] = guiCreateLabel(0.0251,0.31,0.4292,0.0459,"Modelo:",true,GUIEditor_Window[2])
 	guiSetFont(GUIEditor_Label[3],"default-bold-small")
 	GUIEditor_Edit[3] = guiCreateEdit(0.0388,0.36,0.4155,0.06,(veh.model or ""),true,GUIEditor_Window[2])
-	GUIEditor_Label[4] = guiCreateLabel(0.516,0.06,0.4292,0.0459,"Year:",true,GUIEditor_Window[2])
+	GUIEditor_Label[4] = guiCreateLabel(0.516,0.06,0.4292,0.0459,"Ano:",true,GUIEditor_Window[2])
 	guiSetFont(GUIEditor_Label[4],"default-bold-small")
 	GUIEditor_Edit[4] = guiCreateEdit(0.5411,0.11,0.4155,0.06,(veh.year or ""),true,GUIEditor_Window[2])
-	GUIEditor_Label[5] = guiCreateLabel(0.516,0.185,0.4292,0.0459,"Price:",true,GUIEditor_Window[2])
+	GUIEditor_Label[5] = guiCreateLabel(0.516,0.185,0.4292,0.0459,"Preço:",true,GUIEditor_Window[2])
 	guiSetFont(GUIEditor_Label[5],"default-bold-small")
 	GUIEditor_Edit[5] = guiCreateEdit(0.5388,0.235,0.4178,0.06,(veh.price or ""),true,GUIEditor_Window[2])
-	GUIEditor_Label[6] = guiCreateLabel(0.516,0.31,0.4292,0.0459,"Tax:",true,GUIEditor_Window[2])
+	GUIEditor_Label[6] = guiCreateLabel(0.516,0.31,0.4292,0.0459,"Taxa:",true,GUIEditor_Window[2])
 	guiSetFont(GUIEditor_Label[6],"default-bold-small")
 	GUIEditor_Edit[6] = guiCreateEdit(0.5434,0.36,0.4132,0.06,(veh.tax or ""),true,GUIEditor_Window[2])
 	
-	GUIEditor_Label["spawnto"] = guiCreateLabel(0.0251,0.435,0.4292,0.0459,"Spawn to carshop:",true,GUIEditor_Window[2])
+	GUIEditor_Label["spawnto"] = guiCreateLabel(0.0251,0.435,0.4292,0.0459,"Desovar na oficina:",true,GUIEditor_Window[2])
 	guiSetFont(GUIEditor_Label["spawnto"],"default-bold-small")
 	
 	carshops = exports["carshop-system"]:getCarShops()
@@ -345,10 +345,10 @@ function addNewVehicle(veh)
 	end
 	guiComboBoxSetSelected(gui["spawnto"],tonumber(veh.spawnto) or -1 )
 
-	GUIEditor_Label["doortype"] = guiCreateLabel(0.516,0.435,0.4292,0.0459,"Doors:",true,GUIEditor_Window[2])
+	GUIEditor_Label["doortype"] = guiCreateLabel(0.516,0.435,0.4292,0.0459,"Portas:",true,GUIEditor_Window[2])
 	guiSetFont(GUIEditor_Label["doortype"],"default-bold-small")
 
-	gui["doortype"] = guiCreateComboBox( 0.5388,0.485,0.2,0.06, "Default", true, GUIEditor_Window[2])
+	gui["doortype"] = guiCreateComboBox( 0.5388,0.485,0.2,0.06, "Padrão", true, GUIEditor_Window[2])
 	guiComboBoxAdjustHeight(gui["doortype"], 3)
 	outputDebugString(tostring(veh.doortype))
 	guiComboBoxAddItem(gui["doortype"], "Default")
@@ -401,23 +401,23 @@ function addNewVehicle(veh)
 	--]]
 
 	--outputChatBox(veh.spawnto)
-	GUIEditor_Label[7] = guiCreateLabel(0.0251,0.5383+0.1046+0.015,0.4292,0.0459,"Note(s):",true,GUIEditor_Window[2])
+	GUIEditor_Label[7] = guiCreateLabel(0.0251,0.5383+0.1046+0.015,0.4292,0.0459,"Nota(s):",true,GUIEditor_Window[2])
 	guiSetFont(GUIEditor_Label[7],"default-bold-small")
 	
 	GUIEditor_Memo[1] = guiCreateMemo(0.0388,0.6224+0.07,0.9178,0.15,(veh.note or ""),true,GUIEditor_Window[2])
 	
 	
-	GUIEditor_Checkbox[1] = guiCreateCheckBox(0.8,0.435,0.15,0.0459,"Enabled",false,true,GUIEditor_Window[2]) --0.5383
+	GUIEditor_Checkbox[1] = guiCreateCheckBox(0.8,0.435,0.15,0.0459,"Ativado",false,true,GUIEditor_Window[2]) --0.5383
 	if veh.enabled and tonumber(veh.enabled) == 1 then
 		guiCheckBoxSetSelected(GUIEditor_Checkbox[1], true)
 	end
 	
 	if veh.update then
-		GUIEditor_Checkbox[2] = guiCreateCheckBox(0.8,0.495,0.151,0.0459,"Copy",false,true,GUIEditor_Window[2])
+		GUIEditor_Checkbox[2] = guiCreateCheckBox(0.8,0.495,0.151,0.0459,"Cópiar",false,true,GUIEditor_Window[2])
 	end
 
 	--shit
-	GUIEditor_Button[8] = guiCreateButton(0.0388,0.8622,0.4475,0.0944,"Cancel",true,GUIEditor_Window[2])
+	GUIEditor_Button[8] = guiCreateButton(0.0388,0.8622,0.4475,0.0944,"Cancelar",true,GUIEditor_Window[2])
 	guiSetFont(GUIEditor_Button[8],"default-bold-small")
 	addEventHandler( "onClientGUIClick", GUIEditor_Button[8], function()
 		if source == GUIEditor_Button[8] then
@@ -425,7 +425,7 @@ function addNewVehicle(veh)
 		end
 	end)
 	
-	GUIEditor_Button[9] = guiCreateButton(0.516,0.8622,0.4406,0.0944,"Validate",true,GUIEditor_Window[2])
+	GUIEditor_Button[9] = guiCreateButton(0.516,0.8622,0.4406,0.0944,"Validar",true,GUIEditor_Window[2])
 	guiSetFont(GUIEditor_Button[9],"default-bold-small")
 	addEventHandler( "onClientGUIClick", GUIEditor_Button[9], function()
 		if source == GUIEditor_Button[9] then
@@ -447,11 +447,11 @@ function editFuel(fuel)
 	--local fuel = this.fuel
 
 	local w, h = 438,392+30
-	GUIEditor_Window[3] = guiCreateWindow((sx-w)/2,(sy-h)/2,w,h,"Fuel settings",false)
+	GUIEditor_Window[3] = guiCreateWindow((sx-w)/2,(sy-h)/2,w,h,"Configurações de combustível",false)
 	guiSetProperty(GUIEditor_Window[3],"AlwaysOnTop","true")
 	guiSetProperty(GUIEditor_Window[3],"SizingEnabled","false")
 
-	GUIEditor_Label["engine"] = guiCreateLabel(0.0251,0.0867,0.4292,0.0459,"Engine Type:",true,GUIEditor_Window[3])
+	GUIEditor_Label["engine"] = guiCreateLabel(0.0251,0.0867,0.4292,0.0459,"Tipo de motor:",true,GUIEditor_Window[3])
 	guiSetFont(GUIEditor_Label["doortype"],"default-bold-small")
 
 	gui["engine"] = guiCreateComboBox( 0.0388,0.1327,0.2,0.0791, "Petrol", true, GUIEditor_Window[3])
@@ -464,18 +464,18 @@ function editFuel(fuel)
 	guiComboBoxAddItem(gui["engine"], "Piston (avgas)")
 	guiComboBoxSetSelected(gui["engine"], fuel.engine or 0 )
 
-	GUIEditor_Label[8] = guiCreateLabel(0.0251,0.185,0.4292,0.0459,"Consumption (litres/kilometer):",true,GUIEditor_Window[3])
+	GUIEditor_Label[8] = guiCreateLabel(0.0251,0.185,0.4292,0.0459,"Consumo (litros/quilômetros):",true,GUIEditor_Window[3])
 	guiSetFont(GUIEditor_Label[8],"default-bold-small")
 
 	GUIEditor_Edit[8] = guiCreateEdit(0.0388,0.235,0.4155,0.06,(fuel.con or ""),true,GUIEditor_Window[3])
 
-	GUIEditor_Label[9] = guiCreateLabel(0.516,0.185,0.4292,0.0459,"Capacity (litres):",true,GUIEditor_Window[3])
+	GUIEditor_Label[9] = guiCreateLabel(0.516,0.185,0.4292,0.0459,"Capacidade (litros):",true,GUIEditor_Window[3])
 	guiSetFont(GUIEditor_Label[9],"default-bold-small")
 
 	GUIEditor_Edit[9] = guiCreateEdit(0.5388,0.235,0.4178,0.06,(fuel.cap or ""),true,GUIEditor_Window[3])
 
 	--shit
-	GUIEditor_Button[11] = guiCreateButton(0.0388,0.8622,0.4475,0.0944,"Cancel",true,GUIEditor_Window[3])
+	GUIEditor_Button[11] = guiCreateButton(0.0388,0.8622,0.4475,0.0944,"Cancelar",true,GUIEditor_Window[3])
 	guiSetFont(GUIEditor_Button[11],"default-bold-small")
 	addEventHandler( "onClientGUIClick", GUIEditor_Button[11], function()
 		if source == GUIEditor_Button[11] then
@@ -483,7 +483,7 @@ function editFuel(fuel)
 		end
 	end)
 	
-	GUIEditor_Button[12] = guiCreateButton(0.516,0.8622,0.4406,0.0944,"Update",true,GUIEditor_Window[3])
+	GUIEditor_Button[12] = guiCreateButton(0.516,0.8622,0.4406,0.0944,"Atualizar",true,GUIEditor_Window[3])
 	guiSetFont(GUIEditor_Button[12],"default-bold-small")
 	addEventHandler( "onClientGUIClick", GUIEditor_Button[12], function()
 		if source == GUIEditor_Button[12] then
@@ -517,7 +517,7 @@ function closeAddNewVehicle()
 end
 
 function validateCreateVehicle(data)
-	if guiGetText(GUIEditor_Button[9]) == "Create" or guiGetText(GUIEditor_Button[9]) == "Update" then
+	if guiGetText(GUIEditor_Button[9]) == "Criar" or guiGetText(GUIEditor_Button[9]) == "Atualizar" then
 		playSoundCreate()
 		local veh = {}
 		veh.mtaModel = guiGetText(GUIEditor_Edit[1])
@@ -658,17 +658,17 @@ function showConfirmDelete(id, brand, model, createdby)
 	guiWindowSetSizable(GUIEditor_Window[3],false)
 	guiSetProperty(GUIEditor_Window[3],"AlwaysOnTop","true")
 	guiSetProperty(GUIEditor_Window[3],"TitlebarEnabled","false")
-	GUIEditor_Label[8] = guiCreateLabel(0.0254,0.2072,0.9645,0.1982,"Are you sure you want to delete veh #"..id.."("..brand.." "..model..")?",true,GUIEditor_Window[3])
+	GUIEditor_Label[8] = guiCreateLabel(0.0254,0.2072,0.9645,0.1982,"Tem certeza de que deseja excluir veh #"..id.."("..brand.." "..model..")?",true,GUIEditor_Window[3])
 	guiLabelSetHorizontalAlign(GUIEditor_Label[8],"center",false)
-	GUIEditor_Label[9] = guiCreateLabel(0.0254,0.4054,0.9492,0.2162,"This action can't be undone!",true,GUIEditor_Window[3])
+	GUIEditor_Label[9] = guiCreateLabel(0.0254,0.4054,0.9492,0.2162,"Esta ação não pode ser desfeita!",true,GUIEditor_Window[3])
 	guiLabelSetHorizontalAlign(GUIEditor_Label[9],"center",false)
-	GUIEditor_Button[10] = guiCreateButton(0.0254,0.6577,0.4695,0.2613,"Cancel",true,GUIEditor_Window[3])
+	GUIEditor_Button[10] = guiCreateButton(0.0254,0.6577,0.4695,0.2613,"Cancelar",true,GUIEditor_Window[3])
 	addEventHandler( "onClientGUIClick", GUIEditor_Button[10], function()
 		if source == GUIEditor_Button[10] then
 			closeConfirmDelete()
 		end
 	end)
-	GUIEditor_Button[11] = guiCreateButton(0.5051,0.6577,0.4695,0.2613,"Confirm",true,GUIEditor_Window[3])
+	GUIEditor_Button[11] = guiCreateButton(0.5051,0.6577,0.4695,0.2613,"Confirmar",true,GUIEditor_Window[3])
 	addEventHandler( "onClientGUIClick", GUIEditor_Button[11], function()
 		if source == GUIEditor_Button[11] then
 			triggerServerEvent("vehlib:deleteVehicle", localPlayer, id)

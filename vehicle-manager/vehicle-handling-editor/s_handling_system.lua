@@ -21,21 +21,21 @@ dealerPlaces["IndustrialVehicleShop"].int, dealerPlaces["IndustrialVehicleShop"]
 dealerPlaces["BoatShop"].int, dealerPlaces["BoatShop"].dim, dealerPlaces["BoatShop"].x, dealerPlaces["BoatShop"].y, dealerPlaces["BoatShop"].z, dealerPlaces["BoatShop"].rot = 0, 0, 174.587890625, -1939.248046875, -0.15370398759842, 206
 
 local startDriveTestConvo = {
-	"Alright, let's do it!", 
-	"Ok, let's go!", 
-	"Let's roll. What are you waiting for?", 
-	"Don't be shy, just try it.", 
-	"I bet you'd like it, let's go!"
+	"Tudo bem, vamos fazer isso!", 
+	"Ok, vamos!", 
+	"Vamos lá. O que você está esperando?", 
+	"Não seja tímido, apenas tente.", 
+	"Aposto que você gostaria, vamos!"
 }
 local finishDriveTestConvo = {
-	"So, what do you think?", 
-	"Not bad, huh?", 
-	"You should definitely order this one!", 
-	"So..?", 
-	"Worth to spend on, huh?"
+	"Então, o que você acha?",
+	"Não é ruim, hein?",
+	"Você deve definitivamente pedir este!",
+	"Assim..?",
+	"Vale a pena gastar, hein?"
 }
 local orderVehicleConvo = {
-	"Alright, we'll sms you as soon as we have this model in stock.", 
+	"Tudo bem, nós enviaremos SMS assim que tivermos este modelo em estoque.", 
 }
 
 local dealershipPed = {}
@@ -256,26 +256,26 @@ function deleteUniqueHandling(theVehicle, player)
 			exports.logs:dbLog(player, 6, { player, theVehicle }, " Reset unique handling for vehicle #"..dbid..".")
 			exports.global:sendMessageToAdmins("[VEHICLE-MANAGER]: "..getElementData(player, "account:username").." has reset unique handling for vehicle #"..dbid..".")
 			exports["vehicle-system"]:reloadVehicle(tonumber(dbid))
-			outputChatBox("[VEHICLE MANAGER] You have reset unique handling for vehicle #"..dbid..".", player, 0,255,0)
+			outputChatBox("[VEHICLE MANAGER] Você redefiniu o manuseio exclusivo para veículos#"..dbid..".", player, 0,255,0)
 
 			local topicLink = createHandlingThread(player, nil, forumText, "deleted unique handling #" .. tostring(dbid))
 			addVehicleLogs(tonumber(dbid), 'editveh (handling) reset: ' .. topicLink, player)
 		else
 			exports["vehicle-system"]:reloadVehicle(tonumber(dbid))
-			outputChatBox("[VEHICLE MANAGER] You have reset unique handling for vehicle #"..dbid..".", player, 0,255,0)
+			outputChatBox("[VEHICLE MANAGER] Você redefiniu o manuseio exclusivo para veículos #"..dbid..".", player, 0,255,0)
 		end
 	end
 end
 
 function createHandlingThread(who, handling, details, title)
 	local forumText = [=[
-[B]General Information[/B]:
+[B]Informação geral[/B]:
 ]=] .. details .. [=[
-[INDENT]Edited by:   [B]]=] ..tostring(getElementData(who, "account:username")) ..[=[[/B][/INDENT]
+[INDENT]Editado por:   [B]]=] ..tostring(getElementData(who, "account:username")) ..[=[[/B][/INDENT]
 ]=]
 
 	if handling then
-		forumText = forumText .. "[B]New Handling[/B]:\n"
+		forumText = forumText .. "[B]Novo manuseio[/B]:\n"
 
 		handling.centerOfMassX = handling.centerOfMass[1]
 		handling.centerOfMassY = handling.centerOfMass[2]
@@ -304,7 +304,7 @@ function saveHandling(theVehicle1, saveToSQL, who)
 			return false
 		end
 		mysql:query_free("UPDATE `vehicles_shop` SET `handling`='"..toSQL(sHandling).."', `updatedby`='"..getElementData(who, "account:id").."', `updatedate`=NOW() WHERE `id`='"..tostring(id).."' ")	
-		outputChatBox("You have changed handlings of all instances of vehicle shop id #"..id, who)
+		outputChatBox("Você alterou o manuseio de todas as ocorrências de identificação de loja de veículo #"..id, who)
 		exports.logs:dbLog(who, 6, { who }, "CHANGED HANDLINGS OF ALL INSTANCES OF VEHICLE SHOP ID #"..id)
 		exports.global:sendMessageToAdmins("[VEHICLE-MANAGER]: "..getElementData(who, "account:username").." has changed handlings of all instances of vehicle shop id #"..id)
 
@@ -339,7 +339,7 @@ function saveHandling(theVehicle1, saveToSQL, who)
 			end
 		end
 		
-		outputChatBox("You have saved unique handlings for vehicle id #"..dbid, who)
+		outputChatBox("Você salvou handlings exclusivos para identificação de veículo #"..dbid, who)
 		exports.logs:dbLog(who, 6, { who, theVehicle1 }, " SAVED UNIQUE HANDLINGS FOR VEHICLE ID #"..dbid)
 		exports.global:sendMessageToAdmins("[VEHICLE-MANAGER]: "..getElementData(who, "account:username").." saved unique handlings for vehicle id #"..dbid)
 	end	
@@ -362,7 +362,7 @@ function reloadAllInstancesOf(vehicle_shop_id)
 			end
 		end
 	end
-	outputChatBox("You have reloaded "..count.." instances of vehicle shop id #"..vehicle_shop_id.." in game.", client)
+	outputChatBox("Você recarregou "..count.." instâncias de identificação de loja de veículo #"..vehicle_shop_id.." no jogo.", client)
 	exports.logs:dbLog(client, 6, { client }, "RELOADED "..count.." INSTANCES OF VEHICLE SHOP ID #"..vehicle_shop_id.." IN GAME")
 	exports.global:sendMessageToAdmins("[VEHICLE-MANAGER]: "..getElementData(client, "account:username").." has reloaded "..count.." instances of vehicle shop id #"..vehicle_shop_id.." in game.")
 end
@@ -466,7 +466,7 @@ function createTestVehicle(vehShopID, thePed, fromVehLib)
 	
 	local veh = createVehicle(vehicleID, x, y, z , 0, 0, 180, plate)
 	if not (veh) then
-		outputChatBox("Invalid Vehicle ID.", client, 255, 0, 0)
+		outputChatBox("ID do veículo inválido.", client, 255, 0, 0)
 		return false
 	end
 	

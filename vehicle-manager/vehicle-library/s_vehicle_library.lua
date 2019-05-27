@@ -13,7 +13,7 @@ function refreshCarShop()
 		local hiddenAdmin = getElementData(client, "hiddenadmin")
 		if getResourceState(theResource) == "running" then
 			restartResource(theResource)
-			outputChatBox("Carshops were restarted.", client, 0, 255, 0)
+			outputChatBox("Lojas de carros foram reiniciadas.", client, 0, 255, 0)
 			if hiddenAdmin == 0 then
 				exports.global:sendMessageToAdmins("[VEHICLE MANAGER]" .. getPlayerName(client) .. " restarted the carshops.")
 			else
@@ -23,7 +23,7 @@ function refreshCarShop()
 			exports.logs:dbLog(client, 4, client, "RESETCARSHOP")
 		elseif getResourceState(theResource) == "loaded" then
 			startResource(theResource)
-			outputChatBox("Carshops were started", client, 0, 255, 0)
+			outputChatBox("Lojas de carros foram iniciados", client, 0, 255, 0)
 			if hiddenAdmin == 0 then
 				exports.global:sendMessageToAdmins("[VEHICLE MANAGER] " .. getPlayerName(client) .. " started the carshops.")
 			else
@@ -31,7 +31,7 @@ function refreshCarShop()
 			end
 			exports.logs:dbLog(client, 4, client, "RESETCARSHOP")
 		elseif getResourceState(theResource) == "failed to load" then
-			outputChatBox("Carshop's could not be loaded (" .. getResourceLoadFailureReason(theResource) .. ")", client, 255, 0, 0)
+			outputChatBox("Carshop's não pôde ser carregado (" .. getResourceLoadFailureReason(theResource) .. ")", client, 255, 0, 0)
 		end
 	end
 end
@@ -390,7 +390,7 @@ addCommandHandler ( "givevctadmin", giveTempVctAccess )
 function setMyEngineType(thePlayer, commandName, value)
 	local vehicle = getPedOccupiedVehicle(thePlayer)
 	if not vehicle then
-		outputChatBox("You are not in a vehicle", thePlayer, 255, 0, 0)
+		outputChatBox("Você não está em um veículo", thePlayer, 255, 0, 0)
 		return
 	end
 	local result = setVehicleHandling(vehicle, "engineType", tostring(value))
@@ -401,7 +401,7 @@ addCommandHandler ( "setenginetype", setMyEngineType )
 function getMyEngineType(thePlayer, commandName)
 	local vehicle = getPedOccupiedVehicle(thePlayer)
 	if not vehicle then
-		outputChatBox("You are not in a vehicle", thePlayer, 255, 0, 0)
+		outputChatBox("Você não está em um veículo", thePlayer, 255, 0, 0)
 		return
 	end
 	local handling = getVehicleHandling(vehicle)

@@ -1,24 +1,24 @@
 handlingValues = {
-	{"Max Speed (Km/h)", 0.1, 275, ref = 'maxVelocity'},
-	{"Acceleration", 0.1, 75, ref = 'engineAcceleration'},
-	{"Engine Inertia", 0.1, 30, ref = 'engineInertia'},
+	{"Velocidade máxima (Km/h)", 0.1, 275, ref = 'maxVelocity'},
+	{"Aceleração", 0.1, 75, ref = 'engineAcceleration'},
+	{"Inércia do motor", 0.1, 30, ref = 'engineInertia'},
 	
-	{"Suspension Height", -0.375, 0.1, ref = 'suspensionLowerLimit'},
-	{"Suspension Bias", 0.05, 0.95, ref = 'suspensionFrontRearBias'},
-	{"Suspension Force", 0.01, 3, ref = 'suspensionForceLevel'},
-	{"Suspension Damping", 0.01, 0.2, ref = 'suspensionDamping'},
-	{"Steering Lock", 0.1, 55, ref = 'steeringLock'},
+	{"Altura de suspensão", -0.375, 0.1, ref = 'suspensionLowerLimit'},
+	{"Viés da Suspensão", 0.05, 0.95, ref = 'suspensionFrontRearBias'},
+	{"Força de Suspensão", 0.01, 3, ref = 'suspensionForceLevel'},
+	{"Amortecimento da suspensão", 0.01, 0.2, ref = 'suspensionDamping'},
+	{"Bloqueio de direção", 0.1, 55, ref = 'steeringLock'},
 	
-	{"Mass Weight (Kg)", 50, 10000, ref = 'mass'},
-	{"Center of Mass X", -1, 1, ref = 'centerOfMassX'},
-	{"Center of Mass Y", -1, 1, ref = 'centerOfMassY'},
-	{"Center of Mass Z", -1, 1, ref = 'centerOfMassZ'},
+	{"Peso maciço (Kg)", 50, 10000, ref = 'mass'},
+	{"Centro de massa X", -1, 1, ref = 'centerOfMassX'},
+	{"Centro de massa Y", -1, 1, ref = 'centerOfMassY'},
+	{"Centro de massa Z", -1, 1, ref = 'centerOfMassZ'},
 
-	{"Drag Coefficiency", 0.1, 6, ref = 'dragCoeff'},
-	{"Braking Power", 0.1, 50, ref = 'brakeDeceleration'},
-	{"Braking Bias", 0.1, 1, ref = 'brakeBias'},
-	{"Traction Multiplier", 0.1, 6, ref = 'tractionMultiplier'},
-	{"Traction Bias", 0.1, 1, ref = 'tractionBias'},
+	{"Coeficiente de arrasto", 0.1, 6, ref = 'dragCoeff'},
+	{"Potência de travagem", 0.1, 50, ref = 'brakeDeceleration'},
+	{"Viés de frenagem", 0.1, 1, ref = 'brakeBias'},
+	{"Multiplicador de Tracção", 0.1, 6, ref = 'tractionMultiplier'},
+	{"Tendência de Tração", 0.1, 1, ref = 'tractionBias'},
 }
 
 handlings = {
